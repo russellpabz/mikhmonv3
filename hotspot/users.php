@@ -112,33 +112,40 @@ if (!isset($_SESSION["mikhmon"])) {
     </select>
   </div>
   <div class="input-group-4 col-box-4">
-    <select style="padding:5px;" class="group-item group-item-r" id="comment" name="comment" onchange="location = './?hotspot=users&comment='+ this.value +'&session=<?= $session;?>';">
-    <?php
-    if ($comm != "") {
-    } else {
-      echo "<option value=''>".$_comment."</option>";
-    }
-    $TotalReg = count($getuser);
-    for ($i = 0; $i < $TotalReg; $i++) {
-      $ucomment = $getuser[$i]['comment'];
-      $uprofile = $getuser[$i]['profile'];
-      $acomment .= ",".$ucomment."#". $uprofile;
-    }
 
-    $ocomment=  explode(",",$acomment);
-    
-    $comments=array_count_values($ocomment) ;
-    foreach ($comments as $tcomment=>$value) {
+  <input  type="text" style="padding:5.8px;" class="group-item group-item-l" value="<?= $_comment ?>">
 
-      if (is_numeric(substr($tcomment, 3, 3))) {
-       
-        echo "<option value='" . explode("#",$tcomment)[0] . "' >". explode("#",$tcomment)[0]." ".explode("#",$tcomment)[1]. " [".$value. "]</option>";
-       }
- 
-    }
+      <?php if(checkAdmin()): ?>
+      <select style="padding:5px;" class="group-item group-item-r" id="comment" name="comment" onchange="location = './?hotspot=users&comment='+ this.value +'&session=<?= $session;?>';">
+      <?php
+      if ($comm != "") {
+      } else {
+        echo "<option value=''>".$_comment."</option>";
+      }
+      $TotalReg = count($getuser);
+      for ($i = 0; $i < $TotalReg; $i++) {
+        $ucomment = $getuser[$i]['comment'];
+        $uprofile = $getuser[$i]['profile'];
+        $acomment .= ",".$ucomment."#". $uprofile;
+      }
 
-    ?>
-    </select>
+      $ocomment=  explode(",",$acomment);
+      
+      $comments=array_count_values($ocomment) ;
+      foreach ($comments as $tcomment=>$value) {
+
+        if (is_numeric(substr($tcomment, 3, 3))) {
+        
+          echo "<option value='" . explode("#",$tcomment)[0] . "' >". explode("#",$tcomment)[0]." ".explode("#",$tcomment)[1]. " [".$value. "]</option>";
+        }
+  
+      }
+
+      ?>
+      </select>
+
+      <?php endif; ?>
+
   </div>
   </div>
   </div>
@@ -180,7 +187,7 @@ if (!isset($_SESSION["mikhmon"])) {
     <th class="pointer" title="Click to sort"><i class="fa fa-sort"></i> <?= $_name ?></th>
     <th>Print</th>
     <th class="pointer" title="Click to sort"><i class="fa fa-sort"></i> <?= $_profile ?></th>
-	  <th class="pointer" title="Click to sort"><i class="fa fa-sort"></i> Mac Address</th>
+    <th class="pointer" title="Click to sort"><i class="fa fa-sort"></i> Mac Address</th>
     <th class="text-right align-middle pointer" title="Click to sort"><i class="fa fa-sort"></i> <?= $_uptime_user ?></th>
     <th class="text-right align-middle pointer" title="Click to sort"><i class="fa fa-sort"></i> Bytes In</th>
     <th class="text-right align-middle pointer" title="Click to sort"><i class="fa fa-sort"></i> Bytes Out</th>
@@ -215,6 +222,10 @@ for ($i = 0; $i < $TotalReg; $i++) {
   } else {
     $udatalimit = ' ' . formatBytes($udatalimit, 2);
   }
+
+
+
+  if (strpos($ucomment, $_SESSION['mikhmon']) !== false && $_SESSION['mikhmon'] != 'admin') {
 
   echo "<tr>";
   ?>
@@ -253,6 +264,7 @@ for ($i = 0; $i < $TotalReg; $i++) {
   }
   echo  "</td>";
 
+  }//russell
 
 }
 ?>

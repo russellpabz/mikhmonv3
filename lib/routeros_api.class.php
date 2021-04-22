@@ -644,4 +644,29 @@ function randNULC($length) {
 	return $result;
 }
 
+
+function checkAdmin(){
+    return ($_SESSION['mikhmon'] == 'admin') ? true : false;
+}
+
+function checkAndRedirect(){
+
+    $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    $generate_link = "http://$dnsname/?hotspot-user=generate&session=wifi.ph";
+
+    // if(($_GET['hotspot'] != 'logout') && !checkAdmin() && $actual_link != '?session=wifi.ph' && $generate_link != $actual_link && (!isset($_GET['hotspot-user']) && $_GET['session'] == 'wifi.ph')){
+    //     header("Location: http://$dnsname/?session=wifi.ph");
+    //     exit();
+    // }
+
+}
+
+function displayNoneAdmin(){
+    return !checkAdmin() ? ' style="display:none;" ' : '';
+}
+
+function readonlyNoneAdmin(){
+    return !checkAdmin() ? ' readonly ' : '';
+}
+
 ?>

@@ -49,7 +49,7 @@ if (!isset($_SESSION["mikhmon"])) {
       $sprice = $getsprice;
     }
     $getlock = ($_POST['lockunlock']);
-    if ($getlock == "Enable") {
+    if ($getlock == Enable) {
       $lock = '; [:local mac $"mac-address"; /ip hotspot user set mac-address=$mac [find where name=$user]]';
     } else {
       $lock = "";
@@ -92,7 +92,7 @@ if (!isset($_SESSION["mikhmon"])) {
       "rate-limit" => "$ratelimit",
       "shared-users" => "$sharedusers",
       "status-autorefresh" => "1m",
-      //"transparent-proxy" => "yes",
+      "transparent-proxy" => "yes",
       "on-login" => "$onlogin",
       "parent-queue" => "$parent",
     ));

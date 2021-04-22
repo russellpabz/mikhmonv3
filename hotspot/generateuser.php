@@ -21,6 +21,8 @@ error_reporting(0);
 
 ini_set('max_execution_time', 300);
 
+
+
 if (!isset($_SESSION["mikhmon"])) {
 	header("Location:../admin.php?id=login");
 } else {
@@ -50,9 +52,9 @@ date_default_timezone_set($_SESSION['timezone']);
 		}
 
 		if ($currency == in_array($currency, $cekindo['indo'])) {
-			$getprice = $currency . " " . number_format((float)$getprice, 0, ",", ".");
+			$getprice = $currency . " " . number_format($getprice, 0, ",", ".");
 		} else {
-			$getprice = $currency . " " . number_format((float)$getprice);
+			$getprice = $currency . " " . number_format($getprice);
 		}
 		$ValidPrice = "<b>Validity : " . $getvalid . " | Price : " . $getprice . " | Lock User : " . $getlocku . "</b>";
 	} else {
@@ -273,11 +275,11 @@ date_default_timezone_set($_SESSION['timezone']);
 	//$urlprint = "$umode-$ucode-$udate-$ucommt";
 	$urlprint = explode("|", decrypt($genu))[0];
 	if ($currency == in_array($currency, $cekindo['indo'])) {
-		$uprice = $currency . " " . number_format((float)$uprice, 0, ",", ".");
-		$suprice = $currency . " " . number_format((float)$suprice, 0, ",", ".");
+		$uprice = $currency . " " . number_format($uprice, 0, ",", ".");
+		$suprice = $currency . " " . number_format($suprice, 0, ",", ".");
 	} else {
-		$uprice = $currency . " " . number_format((float)$uprice);
-		$suprice = $currency . " " . number_format((float)$suprice);
+		$uprice = $currency . " " . number_format($uprice);
+		$suprice = $currency . " " . number_format($suprice);
 
 	}
 
@@ -319,31 +321,31 @@ date_default_timezone_set($_SESSION['timezone']);
     <a class="btn bg-info" title="Print Small" href="./voucher/print.php?id=<?= $urlprint; ?>&small=yes&session=<?= $session; ?>" target="_blank"> <i class="fa fa-print"></i> <?= $_print_small ?></a>
 </div>
 <table class="table">
-  <tr>
+  <tr <?= displayNoneAdmin() ?>>
     <td class="align-middle"><?= $_qty ?></td><td><div><input class="form-control " type="number" name="qty" min="1" max="500" value="1" required="1"></div></td>
   </tr>
-  <tr>
+  <tr <?= displayNoneAdmin() ?>>
     <td class="align-middle">Server</td>
     <td>
 		<select class="form-control " name="server" required="1">
 			<option>all</option>
 				<?php $TotalReg = count($srvlist);
 			for ($i = 0; $i < $TotalReg; $i++) {
-				echo "<option>" . $srvlist[$i]['name'] . "</option>";
+				echo "<option selected>" . $srvlist[$i]['name'] . "</option>";
 			}
 			?>
 		</select>
 	</td>
 	</tr>
-	<tr>
+	<tr <?= displayNoneAdmin() ?>>
     <td class="align-middle"><?= $_user_mode ?></td><td>
 			<select class="form-control " onchange="defUserl();" id="user" name="user" required="1">
 				<option value="up"><?= $_user_pass ?></option>
-				<option value="vc"><?= $_user_user ?></option>
+				<option value="vc" selected><?= $_user_user ?></option>
 			</select>
 		</td>
 	</tr>
-  <tr>
+  <tr <?= displayNoneAdmin() ?>>
     <td class="align-middle"><?= $_user_length ?></td><td>
       <select class="form-control " id="userl" name="userl" required="1">
         <option>4</option>
@@ -352,14 +354,14 @@ date_default_timezone_set($_SESSION['timezone']);
 				<option>5</option>
 				<option>6</option>
 				<option>7</option>
-				<option>8</option>
+				<option selected>8</option>
 			</select>
     </td>
   </tr>
-  <tr>
+  <tr <?= displayNoneAdmin() ?>>
     <td class="align-middle"><?= $_prefix ?></td><td><input class="form-control " type="text" size="6" maxlength="6" autocomplete="off" name="prefix" value=""></td>
   </tr>
-  <tr>
+  <tr <?= displayNoneAdmin() ?>>
     <td class="align-middle"><?= $_character ?></td><td>
       <select class="form-control " name="char" required="1">
 				<option id="lower" style="display:block;" value="lower"><?= $_random ?> abcd</option>
@@ -371,7 +373,7 @@ date_default_timezone_set($_SESSION['timezone']);
 				<option id="mix" style="display:block;" value="mix"><?= $_random ?> 5ab2c34d</option>
 				<option id="mix1" style="display:block;" value="mix1"><?= $_random ?> 5AB2C34D</option>
 				<option id="mix2" style="display:block;" value="mix2"><?= $_random ?> 5aB2c34D</option>
-				<option id="num" style="display:none;" value="num"><?= $_random ?> 1234</option>
+				<option id="num" value="num" selected><?= $_random ?> 1234</option>
 			</select>
     </td>
   </tr>
@@ -379,21 +381,76 @@ date_default_timezone_set($_SESSION['timezone']);
     <td class="align-middle"><?= $_profile ?></td><td>
 			<select class="form-control " onchange="GetVP();" id="uprof" name="profile" required="1">
 				<?php if ($genprof != "") {
-				echo "<option>" . $genprof . "</option>";
-			} else {
-			}
-			$TotalReg = count($getprofile);
-			for ($i = 0; $i < $TotalReg; $i++) {
-				echo "<option>" . $getprofile[$i]['name'] . "</option>";
-			}
-			?>
+						echo "<option>" . $genprof . "</option>";
+					} else {
+					}
+					$TotalReg = count($getprofile);
+					for ($i = 0; $i < $TotalReg; $i++) {
+						if(!checkAdmin() && $getprofile[$i]['name'] != 'default' && $getprofile[$i]['name'] != 'Unlimeted'){
+							echo "<option>" . $getprofile[$i]['name'] . "</option>";
+						}
+						
+					}
+				?>
 			</select>
+
+			<script>
+				(function($){
+					$("#uprof").change(function(){
+
+						var type = this.value;
+
+						$('[name="mbgb"] option').filter(function() {
+							//may want to use $.trim in here
+							return $(this).text() == "GB";
+						}).prop('selected', true);
+
+						if(type == "3GB-Fast"){
+							$("[name='datalimit']").val("3");
+						}
+						else if(type == "GameOn-1Days"){
+							$("[name='datalimit']").val("");
+							$("[name='timelimit']").val("1d");
+						}
+						else if(type == "GameOn-3Days"){
+							$("[name='datalimit']").val("");
+							$("[name='timelimit']").val("3d");
+						}
+						else if(type == "GameOn-30Days"){
+							$("[name='datalimit']").val("");
+							$("[name='timelimit']").val("30d");
+						}
+						else if(type == "Unli-1Day"){
+							$("[name='datalimit']").val("");
+							$("[name='timelimit']").val("1d");
+						}
+						else if(type == "Unli-3Days"){
+							$("[name='datalimit']").val("");
+							$("[name='timelimit']").val("3d");
+						}
+						else if(type == "GoMo10GB"){
+							$("[name='datalimit']").val("10");
+							$("[name='timelimit']").val("");
+						}
+						else if(type == "GoMo30GB"){
+							$("[name='datalimit']").val("30");
+							$("[name='timelimit']").val("");
+						}
+						else{
+							$("[name='datalimit']").val("");
+							$("[name='timelimit']").val("");
+						}
+
+					});
+				})(jQuery);
+			</script>
+		
 		</td>
 	</tr>
-	<tr>
-    <td class="align-middle"><?= $_time_limit ?></td><td><input class="form-control " type="text" size="4" autocomplete="off" name="timelimit" value=""></td>
+	<tr <?= displayNoneAdmin() ?>>
+    <td class="align-middle"><?= $_time_limit ?></td><td><input class="form-control " type="text" size="4" autocomplete="off" name="timelimit" value="1d"></td>
   </tr>
-	<tr>
+	<tr <?= displayNoneAdmin() ?>>
     <td class="align-middle"><?= $_data_limit ?></td><td>
       <div class="input-group">
       	<div class="input-group-10 col-box-9">
@@ -408,8 +465,8 @@ date_default_timezone_set($_SESSION['timezone']);
       </div>
     </td>
   </tr>
-	<tr>
-    <td class="align-middle"><?= $_comment ?></td><td><input class="form-control " type="text" title="No special characters" id="comment" autocomplete="off" name="adcomment" value=""></td>
+	<tr <?= displayNoneAdmin() ?>>
+    <td class="align-middle"><?= $_comment ?></td><td><input class="form-control " type="text" title="No special characters" id="comment" autocomplete="off" name="adcomment" value="<?= $_SESSION['mikhmon']?> <?= date("h:i:s A") ?> -"></td>
   </tr>
    <tr >
     <td  colspan="4" class="align-middle w-12"  id="GetValidPrice">

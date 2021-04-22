@@ -131,16 +131,16 @@ if (!isset($_SESSION["mikhmon"])) {
   
   if($getsprice == "" && $getprice != ""){
     if ($currency == in_array($currency, $cekindo['indo'])) {
-      $waprice = $_price." : *" . $currency . " " . number_format((float)$getprice, 0, ",", ".") . "* %0A";
+      $waprice = $_price." : *" . $currency . " " . number_format($getprice, 0, ",", ".") . "* %0A";
     } else {
-      $waprice = $_price . " : *" . $currency . " " . number_format((float)$getprice) . "* %0A";
+      $waprice = $_price . " : *" . $currency . " " . number_format($getprice) . "* %0A";
     }
     $btprice = $getprice;
   }else if($getsprice != ""){
     if ($currency == in_array($currency, $cekindo['indo'])) {
-      $waprice = $_price." : *" . $currency . " " . number_format((float)$getsprice, 0, ",", ".") . "* %0A";
+      $waprice = $_price." : *" . $currency . " " . number_format($getsprice, 0, ",", ".") . "* %0A";
     } else {
-      $waprice = $_price . " : *" . $currency . " " . number_format((float)$getsprice) . "* %0A";
+      $waprice = $_price . " : *" . $currency . " " . number_format($getsprice) . "* %0A";
     }
     $btprice = $getsprice;
   }else if ($getsprice == "") {
@@ -190,7 +190,7 @@ include('./include/quickbt.php');
 
 
 if ($currency == in_array($currency, $cekindo['indo'])) {
-  $pricebt = $currency . " " . number_format((float)$btprice, 0, ",", ".");
+  $pricebt = $currency . " " . number_format($btprice, 0, ",", ".");
   if (substr($getvalid, -1) == "d") {
     $validity = substr($getvalid, 0, -1) . "Hari";
   } else if (substr($getvalid, -1) == "h") {
@@ -208,7 +208,7 @@ if ($currency == in_array($currency, $cekindo['indo'])) {
     $timelimit = (substr($utimelimit, 0, -1) * 7) . "Hari";
   }
   } else {
-    $pricebt = $currency . " " . number_format((float)$btprice);
+    $pricebt = $currency . " " . number_format($btprice);
     $timelimit = $utimelimit;
     $validity = $getvalid;
   }
@@ -288,23 +288,30 @@ include('./voucher/printbt.php');
 <div class="card-body">
 <form autocomplete="new-password" method="post" action="">
   <div>
-    <?php if ($_SESSION['ubp'] != "") {
-      echo "    <a class='btn bg-warning' href='./?hotspot=users&profile=" . $_SESSION['ubp'] . "&session=" . $session . "'><i class='fa fa-close'></i> ".$_close."</a>";
-    } elseif ($_SESSION['ubc'] != "") {
-      echo "    <a class='btn bg-warning' href='./?hotspot=users&comment=" . $_SESSION['ubc'] . "&session=" . $session . "'><i class='fa fa-close'></i> ".$_close."</a>";
-    } elseif ($_SESSION['hua'] != "") {
-      $_SESSION['ubn'] = "";
-      echo "    <a class='btn bg-warning' href='./?hotspot=active&session=" . $session . "'><i class='fa fa-close'></i> ".$_close."</a>";
-      $_SESSION['hua'] = "";
-    } elseif ($_SESSION['ubn'] != "") {
-      echo "    <a class='btn bg-warning' href='./?hotspot=users&profile=all&session=" . $session . "'><i class='fa fa-close'></i> ".$_close."</a>";
-      $_SESSION['ubn'] = "";
-    } else {
-      echo "    <a class='btn bg-warning' href='./?hotspot=users&profile=all&session=" . $session . "'><i class='fa fa-close'></i> ".$_close."</a>";
-    }
-    ?>
-    <button type="submit" name="save" class="btn bg-primary" > <i class="fa fa-save"></i> <?= $_save ?></button>
-    <div class="btn bg-danger"  onclick="if(confirm('Are you sure to delete username (<?= $uname; ?>)?')){loadpage('./?remove-hotspot-user=<?= $uid; ?>&session=<?= $session; ?>')}else{}" title='Remove <?= $uname; ?>'><i class='fa fa-minus-square'></i> <?= $_remove ?></div>
+
+    <?php if(checkAdmin()): ?>
+
+      <?php if ($_SESSION['ubp'] != "") {
+        echo "    <a class='btn bg-warning' href='./?hotspot=users&profile=" . $_SESSION['ubp'] . "&session=" . $session . "'><i class='fa fa-close'></i> ".$_close."</a>";
+      } elseif ($_SESSION['ubc'] != "") {
+        echo "    <a class='btn bg-warning' href='./?hotspot=users&comment=" . $_SESSION['ubc'] . "&session=" . $session . "'><i class='fa fa-close'></i> ".$_close."</a>";
+      } elseif ($_SESSION['hua'] != "") {
+        $_SESSION['ubn'] = "";
+        echo "    <a class='btn bg-warning' href='./?hotspot=active&session=" . $session . "'><i class='fa fa-close'></i> ".$_close."</a>";
+        $_SESSION['hua'] = "";
+      } elseif ($_SESSION['ubn'] != "") {
+        echo "    <a class='btn bg-warning' href='./?hotspot=users&profile=all&session=" . $session . "'><i class='fa fa-close'></i> ".$_close."</a>";
+        $_SESSION['ubn'] = "";
+      } else {
+        echo "    <a class='btn bg-warning' href='./?hotspot=users&profile=all&session=" . $session . "'><i class='fa fa-close'></i> ".$_close."</a>";
+      }
+      ?>
+      <button type="submit" name="save" class="btn bg-primary" > <i class="fa fa-save"></i> <?= $_save ?></button>
+      <div class="btn bg-danger"  onclick="if(confirm('Are you sure to delete username (<?= $uname; ?>)?')){loadpage('./?remove-hotspot-user=<?= $uid; ?>&session=<?= $session; ?>')}else{}" title='Remove <?= $uname; ?>'><i class='fa fa-minus-square'></i> <?= $_remove ?></div>
+    
+    <?php endif; ?>
+
+    
     <a class="btn bg-secondary"  title="Print" href="javascript:window.open('./voucher/print.php?user=<?= $usermode . "-" . $uname; ?>&qr=no&session=<?= $session; ?>','_blank','width=310,height=450').print();"> <i class="fa fa-print"></i> <?= $_print ?></a>
     <a class="btn bg-info"  title="Print QR" href="javascript:window.open('./voucher/print.php?user=<?= $usermode . "-" . $uname; ?>&qr=yes&session=<?= $session; ?>','_blank','width=310,height=450').print();"> <i class="fa fa-qrcode"></i> <?= $_print_qr ?></a>
     <?php if ($utimelimit == "1s") {
@@ -315,7 +322,7 @@ include('./voucher/printbt.php');
     <div id="shareWA" class="btn bg-blue" onclick="sendToQuickPrinterChrome()" title="Print Bluetooth"><i class="fa fa-bluetooth"></i> <?= $_print ?> BT</div><br>
   </div>
 <table class="table">
-  <tr>
+  <tr <?= displayNoneAdmin() ?>>
     <td class="align-middle">Enabled</td>
     <td>
 			<select class="form-control" name="disabled" required="1">
@@ -329,7 +336,7 @@ include('./voucher/printbt.php');
 			</select>
     </td>
   </tr>
-  <tr>
+  <tr <?= displayNoneAdmin() ?>>
     <td class="align-middle">Server</td>
     <td>
 			<select class="form-control" name="server" required="1">
@@ -348,13 +355,13 @@ include('./voucher/printbt.php');
 		</td>
 	</tr>
   <tr>
-    <td class="align-middle"><?= $_name ?></td><td><input id="name" class="form-control" type="text" autocomplete="off" name="name" value="<?= $uname; ?>"></td>
+    <td class="align-middle"><?= $_name ?></td><td><input id="name" <?= readonlyNoneAdmin() ?> class="form-control" type="text" autocomplete="off" name="name" value="<?= $uname; ?>"></td>
   </tr>
   <tr>
     <td class="align-middle"><?= $_password ?></td><td>
 	<div class="input-group">
     <div class="input-group-11 col-box-10">
-      <input class="group-item group-item-l" id="passUser" type="password" name="pass" autocomplete="new-password" value="<?= $upass; ?>">
+      <input class="group-item group-item-l" <?= readonlyNoneAdmin() ?> id="passUser" type="password" name="pass" autocomplete="new-password" value="<?= $upass; ?>">
     </div>
           <div class="input-group-1 col-box-2">
 <div class="group-item group-item-r pd-2p5 text-center">
@@ -366,18 +373,23 @@ include('./voucher/printbt.php');
   </tr>
   <tr>
     <td class="align-middle"><?= $_profile ?></td><td>
-			<select class="form-control" name="profile" required="1">
+
+      <?php if(!checkAdmin()): ?>
+      <input <?= readonlyNoneAdmin() ?> class="form-control" type="text" value="<?= $uprofile; ?>">
+      <?php endif; ?>
+
+			<select <?= displayNoneAdmin() ?> readonly class="form-control" name="profile" required="1">
 				<option><?= $uprofile; ?></option>
 				<?php $TotalReg = count($getprofile);
-    for ($i = 0; $i < $TotalReg; $i++) {
-      echo "<option>" . $getprofile[$i]['name'] . "</option>";
-    }
-    ?>
+        for ($i = 0; $i < $TotalReg; $i++) {
+          echo "<option>" . $getprofile[$i]['name'] . "</option>";
+        }
+        ?>
 			</select>
 		</td>
 	</tr>
   <tr>
-    <td class="align-middle">Mac Address</td><td><input class="form-control" type="text" value="<?= $umac; ?>"></td>
+    <td class="align-middle">Mac Address</td><td><input <?= readonlyNoneAdmin() ?> class="form-control" type="text" value="<?= $umac; ?>"></td>
   </tr>
   <tr>
     <td class="align-middle">Uptime</td><td><input class="form-control" type="text" value="<?php if ($uuptime == 0) {
@@ -385,7 +397,7 @@ include('./voucher/printbt.php');
         echo $uuptime;
       } ?>" disabled></td>
   </tr>
-  <tr>
+  <tr <?= displayNoneAdmin() ?>>
     <td class="align-middle">Bytes  In / Out</td><td><input class="form-control" type="text" value="<?php if ($ubytesout == 0) {
     } else {
       echo formatBytes($ubytesin, 2);
@@ -394,10 +406,10 @@ include('./voucher/printbt.php');
           echo formatBytes($ubytesout, 2);
     } ?>" disabled></td>
   </tr>
-  <tr>
+  <tr <?= displayNoneAdmin() ?>>
     <td class="align-middle"><?= $_time_limit ?></td><td><input id="timelimit" class="form-control" type="text" size="4" autocomplete="off" name="timelimit" value="<?php if ($utimelimit == "1s") {echo "";} else {echo $utimelimit;} ?>"></td>
   </tr>
-  <tr>
+  <tr <?= displayNoneAdmin() ?>>
     <td class="align-middle"><?= $_data_limit ?></td><td>
       <div class="input-group">
         <div class="input-group-10 col-box-9">
@@ -414,7 +426,7 @@ include('./voucher/printbt.php');
     </td>
   </tr>
   <tr>
-    <td class="align-middle"><?= $_tcomment ?></td><td><input class="form-control" type="text" id="comment" autocomplete="off" name="comment" title="No special characters" value="<?= $ucomment; ?>" <?= $commt ?>><input type="hidden" name="h_comment" value="<?= $ucomment ?>"></td>
+    <td class="align-middle"><?= $_tcomment ?></td><td><input  <?= readonlyNoneAdmin() ?> class="form-control" type="text" id="comment" autocomplete="off" name="comment" title="No special characters" value="<?= $ucomment; ?>" <?= $commt ?>><input type="hidden" name="h_comment" value="<?= $ucomment ?>"></td>
   </tr>
   <tr>
   <tr <?=$display?>>
@@ -424,9 +436,9 @@ include('./voucher/printbt.php');
     <td class="align-middle"><?= $_price ?></td><td><input class="form-control" id="price" type="text" value="<?php if ($getprice == 0) {
       } else {
         if ($currency == in_array($currency, $cekindo['indo'])) {
-          echo $currency . " " . number_format((float)$getprice, 0, ",", ".");
+          echo $currency . " " . number_format($getprice, 0, ",", ".");
         } else {
-          echo $currency . " " . number_format((float)$getprice);
+          echo $currency . " " . number_format($getprice);
         }
       } ?>" disabled></td>
   </tr>
@@ -434,9 +446,9 @@ include('./voucher/printbt.php');
     <td class="align-middle"><?= $_selling_price ?></td><td><input class="form-control" id="price" type="text" value="<?php if ($getprice == 0) {
       } else {
         if ($currency == in_array($currency, $cekindo['indo'])) {
-          echo $currency . " " . number_format((float)$getsprice, 0, ",", ".");
+          echo $currency . " " . number_format($getsprice, 0, ",", ".");
         } else {
-          echo $currency . " " . number_format((float)$getsprice);
+          echo $currency . " " . number_format($getsprice);
         }
       } ?>" disabled></td>
   </tr>

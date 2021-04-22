@@ -80,15 +80,15 @@ if (!isset($_SESSION["mikhmon"])) {
   
     if($getsprice == "0" && $getprice != "0"){
       if ($currency == in_array($currency, $cekindo['indo'])) {
-        $price = $currency . " " . number_format((float)$getprice, 0, ",", ".");
+        $price = $currency . " " . number_format($getprice, 0, ",", ".");
       } else {
-        $price = $currency . " " . number_format((float)$getprice, 2);
+        $price = $currency . " " . number_format($getprice, 2);
       }
     }else if($getsprice != "0"){
       if ($currency == in_array($currency, $cekindo['indo'])) {
-        $price = $currency . " " . number_format((float)$getsprice, 0, ",", ".");
+        $price = $currency . " " . number_format($getsprice, 0, ",", ".");
       } else {
-        $price = $currency . " " . number_format((float)$getsprice, 2);
+        $price = $currency . " " . number_format($getsprice, 2);
       }
     }else if ($getsprice == "0") {
       $price = "";
@@ -125,14 +125,14 @@ body {
 }
 table.voucher {
   display: inline-block;
-  border: 2px solid black;
+  /* border: 2px solid black; */
   margin: 2px;
 }
 @page
 {
   size: auto;
-  margin-left: 7mm;
-  margin-right: 3mm;
+  margin-left: 0mm;
+  margin-right: 0mm;
   margin-top: 9mm;
   margin-bottom: 3mm;
 }

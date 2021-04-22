@@ -1,18 +1,22 @@
+																								
 <style>
 	.qrcode{
-		height:100px;
-		width:100px;
+		height:150px;
+		width:150px;
 	}
 </style>
 
-<table class="voucher" style=" width: 180px;">
+<table class="voucher" >
   <tbody>
 <!-- Logo Hotspotname -->
-    <tr>
+    <!-- <tr>
       <td style="text-align: center; font-size: 14px; font-weight:bold;"><?= $hotspotname; ?></td>
-    </tr>
+    </tr> -->
     <tr>
-      <td style="text-align: center; font-size: 14px; font-weight:bold; border-bottom: 1px black solid;"><img src="<?= $logo; ?>" alt="logo" style="height:30px;border:0;"><br><?= date("Y-m-d h:i:sa") ?></td>
+      <td style="text-align: center; font-size: 14px; font-weight:bold; border-bottom: 1px black solid;">
+		  <h1>HotSpot</h1>
+		<?= date("Y-m-d h:i:sa") ?>
+	</td>
     </tr>
 <!-- /  -->
     <tr>
@@ -25,9 +29,9 @@
         <table style="width:100%;">
 <!-- Username = Password    -->
 <?php if ($usermode == "vc") { ?>
-        <tr>
-          <td font-size: 12px;>Kode Voucher</td>
-        </tr>
+        <!-- <tr>
+          <td font-size: 12px;>Code Voucher</td>
+        </tr> -->
         <tr>
           <td style="width:100%; border: 1px solid black; font-weight:bold; font-size:16px;"><?= $username; ?></td>
         </tr>
@@ -59,7 +63,7 @@
 <!-- /  -->
     <tr>
       <!-- Price  -->
-      <td colspan="2" style="border-top: 1px solid black;font-weight:bold; font-size:16px"><?= $validity; ?> <?= $timelimit; ?> <?= $datalimit; ?> <?= $price; ?></td>
+      <td colspan="2" style="border-top: 1px solid black;font-weight:bold; font-size:16px"><?= $validity; ?> - <span style="display:none;"><?= $timelimit; ?></span> <?= $datalimit; ?> - <?= $price; ?></td>
 <!-- /  -->
     </tr>
     <tr>
@@ -73,4 +77,4 @@
       </td>
     </tr>
   </tbody>
-</table>
+</table>	        	        	        	        

@@ -166,6 +166,8 @@ if (!isset($_SESSION["mikhmon"])) {
 
         <div class="row">
           <div  class="col-8">
+
+            <?php if (checkAdmin()): ?>
             <div id="r_2"class="row">
             <div class="card">
               <div class="card-header"><h3><i class="fa fa-wifi"></i> Hotspot</h3></div>
@@ -225,7 +227,9 @@ if (!isset($_SESSION["mikhmon"])) {
                 </div>
               </div>
             </div>
-          </div>
+            </div>
+            <?php endif; ?>
+
           </div>
             <div class="card">
               <div class="card-header"><h3><i class="fa fa-area-chart"></i> <?= $_traffic ?> </h3></div>
@@ -350,54 +354,65 @@ if (!isset($_SESSION["mikhmon"])) {
               </div>
             </div>  
             <div class="col-4">
-            <div id="r_4" class="row">
-              <div <?= $lreport; ?> class="box bmh-75 box-bordered">
-                <div class="box-group">
-                  <div class="box-group-icon"><i class="fa fa-money"></i></div>
-                    <div class="box-group-area">
-                      <span >
-                        <div id="reloadLreport">
-                          <?php 
-                          if ($_SESSION[$session.'sdate'] == $_SESSION[$session.'idhr']){
-                            echo $_income." <br/>" . "
-                          ".$_today." " . $_SESSION[$session.'totalHr'] . "vcr : " . $currency . " " . $_SESSION[$session.'dincome']. "<br/>
-                          ".$_this_month." " . $_SESSION[$session.'totalBl'] . "vcr : " . $currency . " " . $_SESSION[$session.'mincome']; 
-                          }else{
-                            echo "<div id='loader' ><i><span> <i class='fa fa-circle-o-notch fa-spin'></i> ". $_processing." </i></div>";
-                          }
-                          ?>                       
-                        </div>
-                    </span>
-                </div>
-              </div>
-            </div>
-            </div>
-            <div id="r_3" class="row">
-            <div class="card">
-              <div class="card-header">
-                <h3><a onclick="cancelPage()" href="./?hotspot=log&session=<?= $session; ?>" title="Open Hotspot Log" ><i class="fa fa-align-justify"></i> <?= $_hotspot_log ?></a></h3></div>
-                  <div class="card-body">
-                    <div style="padding: 5px; height: <?= $logh; ?> ;" class="mr-t-10 overflow">
-                      <table class="table table-sm table-bordered table-hover" style="font-size: 12px; td.padding:2px;">
-                        <thead>
-                          <tr>
-                            <th><?= $_time ?></th>
-                            <th><?= $_users ?> (IP)</th>
-                            <th><?= $_messages ?></th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td colspan="3" class="text-center">
-                            <div id="loader" ><i><i class='fa fa-circle-o-notch fa-spin'></i> <?= $_processing ?> </i></div>
-                            </td>
-                          </tr>
-                      </tbody>
-                    </table>
+
+            <?php if (checkAdmin()): ?>      
+
+              <div id="r_4" class="row">
+                <div <?= $lreport; ?> class="box bmh-75 box-bordered">
+                  <div class="box-group">
+                    <div class="box-group-icon"><i class="fa fa-money"></i></div>
+                      <div class="box-group-area">
+                        <span >
+                          <div id="reloadLreport">
+                            <?php 
+                            if ($_SESSION[$session.'sdate'] == $_SESSION[$session.'idhr']){
+                              echo $_income." <br/>" . "
+                            ".$_today." " . $_SESSION[$session.'totalHr'] . "vcr : " . $currency . " " . $_SESSION[$session.'dincome']. "<br/>
+                            ".$_this_month." " . $_SESSION[$session.'totalBl'] . "vcr : " . $currency . " " . $_SESSION[$session.'mincome']; 
+                            }else{
+                              echo "<div id='loader' ><i><span> <i class='fa fa-circle-o-notch fa-spin'></i> ". $_processing." </i></div>";
+                            }
+                            ?>                       
+                          </div>
+                      </span>
                   </div>
                 </div>
               </div>
-              </div>
+              
+            <?php endif; ?>
+
             </div>
+
+             <?php if (checkAdmin()): ?>             
+
+              <div id="r_3" class="row">
+                <div class="card">
+                  <div class="card-header">
+                    <h3><a onclick="cancelPage()" href="./?hotspot=log&session=<?= $session; ?>" title="Open Hotspot Log" ><i class="fa fa-align-justify"></i> <?= $_hotspot_log ?></a></h3></div>
+                      <div class="card-body">
+                        <div style="padding: 5px; height: <?= $logh; ?> ;" class="mr-t-10 overflow">
+                          <table class="table table-sm table-bordered table-hover" style="font-size: 12px; td.padding:2px;">
+                            <thead>
+                              <tr>
+                                <th><?= $_time ?></th>
+                                <th><?= $_users ?> (IP)</th>
+                                <th><?= $_messages ?></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td colspan="3" class="text-center">
+                                <div id="loader" ><i><i class='fa fa-circle-o-notch fa-spin'></i> <?= $_processing ?> </i></div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+            <?php endif; ?>
 </div>
 </div>
