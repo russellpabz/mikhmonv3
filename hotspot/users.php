@@ -173,7 +173,7 @@ if (!isset($_SESSION["mikhmon"])) {
       win.focus();
     }}
   </script>
-  <button class="btn bg-primary" title='Print' onclick="printV('qr','no');"><i class="fa fa-print"></i> <?= $_print_default ?></button>
+  <button  class="btn bg-primary" title='Print' onclick="printV('qr','no');"><i class="fa fa-print"></i> <?= $_print_default ?></button>
   <button class="btn bg-primary" title='Print QR' onclick="printV('qr','yes');"><i class="fa fa-print"></i> <?= $_print_qr ?></button>
   <button class="btn bg-primary" title='Print Small'onclick="printV('small','yes');"><i class="fa fa-print"></i> <?= $_print_small ?></button>
   </div>
@@ -229,14 +229,14 @@ for ($i = 0; $i < $TotalReg; $i++) {
 
   echo "<tr>";
   ?>
-  <td style='text-align:center;'>  <i class='fa fa-minus-square text-danger pointer' onclick="if(confirm('Are you sure to delete username (<?= $uname; ?>)?')){loadpage('./?remove-hotspot-user=<?= $uid; ?>&session=<?= $session; ?>')}else{}" title='Remove <?= $uname; ?>'></i>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+  <td style='text-align:center;'>  <i  <?= displayNoneAdmin() ?> class='fa fa-minus-square text-danger pointer' onclick="if(confirm('Are you sure to delete username (<?= $uname; ?>)?')){loadpage('./?remove-hotspot-user=<?= $uid; ?>&session=<?= $session; ?>')}else{}" title='Remove <?= $uname; ?>'></i>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
   <?php
   if ($udisabled == "true") {
     $uriprocess = "'./?enable-hotspot-user=" . $uid . "&session=" . $session."'";
-    echo '<span class="text-warning pointer" title="Enable User ' . $uname . '"  onclick="loadpage('.$uriprocess.')"><i class="fa fa-lock "></i></span></td>';
+    echo '<span class="text-warning pointer"'.   displayNoneAdmin() .' title="Enable User ' . $uname . '"  onclick="loadpage('.$uriprocess.')"><i class="fa fa-lock "></i></span></td>';
   } else {
     $uriprocess = "'./?disable-hotspot-user=" . $uid . "&session=" . $session."'";
-    echo '<span class="pointer" title="Disable User ' . $uname . '"  onclick="loadpage('.$uriprocess.')"><i class="fa fa-unlock "></i></span></td>';
+    echo '<span class="pointer" '.   displayNoneAdmin() .' title="Disable User ' . $uname . '"  onclick="loadpage('.$uriprocess.')"><i class="fa fa-unlock "></i></span></td>';
   }
   echo "<td>" . $userver . "</td>";
   if ($uname == $upass) {

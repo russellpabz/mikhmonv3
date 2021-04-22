@@ -74,6 +74,7 @@ date_default_timezone_set($_SESSION['timezone']);
 		$timelimit = ($_POST['timelimit']);
 		$datalimit = ($_POST['datalimit']);
 		$adcomment = ($_POST['adcomment']);
+		$namecomment = ($_POST['namecomment']);
 		$mbgb = ($_POST['mbgb']);
 		if ($timelimit == "") {
 			$timelimit = "0";
@@ -88,7 +89,7 @@ date_default_timezone_set($_SESSION['timezone']);
 		if ($adcomment == "") {
 			$adcomment = "";
 		} else {
-			$adcomment = $adcomment;
+			$adcomment = $adcomment . $namecomment;
 		}
 		$getprofile = $API->comm("/ip/hotspot/user/profile/print", array("?name" => "$profile"));
 		$ponlogin = $getprofile[0]['on-login'];
@@ -467,6 +468,10 @@ date_default_timezone_set($_SESSION['timezone']);
   </tr>
 	<tr <?= displayNoneAdmin() ?>>
     <td class="align-middle"><?= $_comment ?></td><td><input class="form-control " type="text" title="No special characters" id="comment" autocomplete="off" name="adcomment" value="<?= $_SESSION['mikhmon']?> <?= date("h:i:s A") ?> -"></td>
+  </tr>
+  </tr>
+	<tr>
+    <td class="align-middle">Name</td><td><input class="form-control " type="text" title="No special characters" id="namecomment" autocomplete="off" name="namecomment" value=""></td>
   </tr>
    <tr >
     <td  colspan="4" class="align-middle w-12"  id="GetValidPrice">
