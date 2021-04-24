@@ -231,16 +231,24 @@ $(document).ready(function(){
 <div class="row">
 	<div class="row">
 	<div class="col-12">
+		
 		<div style="padding-bottom: 5px; padding-top: 5px;">
 		  <input id="filterTable" type="text" class="form-control" style="float:left; margin-top: 6px; max-width: 150px;" placeholder="<?= $_search ?>">&nbsp;
 		  <button name="help" class="btn bg-primary" onclick="location.href='#help';" title="Help"><i class="fa fa-question"></i> <?= $_help ?></button>
+		  
+		  <?php if(checkAdmin()): ?>
 		  <button class="btn bg-primary" onclick="exportTableToCSV('report-mikhmon-<?= $filedownload . $fprefix; ?>.csv')" title="Download selling report"><i class="fa fa-download"></i> CSV</button>
 			<button class="btn bg-primary" onclick="location.href='./?report=selling&session=<?= $session; ?>';" title="Reload all data"><i class="fa fa-search"></i> <?= $_all ?></button>
 			<?php if(!empty($idbl)){echo '<button name="resume" id="openResume" class="btn bg-primary"title="Resume Report"><i class="fa fa-area-chart"></i> '.$_resume.'</button>';}else{
 				echo '<a class="btn bg-primary" href="./?report=selling&idbl='.$idbl2.'&session='.$session.'" title="Show '.ucfirst(substr($idbl2,0,3).' '.substr($idbl2,3,5)).'"><i class="fa fa-search"></i> '.ucfirst(substr($idbl2,0,3).' '.substr($idbl2,3,5)).'</a>';}?>
 		  <button name="print" class="btn bg-primary" onclick="window.open('./report/print.php?<?= explode("?report=selling&",$url)[1] ?>','_blank');" title="Print"><i class="fa fa-print"></i> <?= $_print ?></button>
 		  <button style="display: <?= $shd; ?>;" name="remdata" class="btn bg-danger" onclick="location.href='#remdata';" title="Delete Data <?= $filedownload; ?>"><i class="fa fa-trash"></i> <?= $_delete_data.' '. $filedownload; ?></button>
+		  
+		 
 		  <button  id="remSelected" style="display: none;" class="btn bg-red" onclick="MikhmonRemoveReportSelected()"><i class="fa fa-trash"></i> <span id="selected"></span> <?= $_selected ?></button>
+		
+		  <?php endif; ?>
+		
 		</div>
 	</div>
 	</div>
@@ -336,7 +344,7 @@ $(document).ready(function(){
 				<tr>
 				  <th colspan=5 ><?= $_selling_report ?> <?= $filedownload . $fprefix; ?><b style="font-size:0;">,,,,</b></th>
 				  <th style="text-align:right;"><?= $_total ?></th>
-				  <th style="text-align:right;" id="total"></th>
+				  <th style="text-align:right; display: none;" id="total"></th> 
 				</tr>
 				<tr>
 				  <th >&#8470;</th>
@@ -365,7 +373,7 @@ $(document).ready(function(){
 						echo "</td>";
 						echo "<td>";
 						$username = $getname[2];
-						echo $username;
+						echo substr($username, 0, 4) ."....";
 						echo "</td>";
 						echo "<td>";
 						$profile = $getname[7];
@@ -396,7 +404,7 @@ $(document).ready(function(){
 					echo "</td>";
 					echo "<td>";
 					$username = $getname[2];
-					echo $username;
+					echo substr($username, 0, 4) ."....";
 					echo "</td>";
 					echo "<td>";
 					$profile = $getname[7];

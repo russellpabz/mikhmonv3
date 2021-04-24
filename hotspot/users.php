@@ -77,14 +77,14 @@ if (!isset($_SESSION["mikhmon"])) {
 <div class="row">
 <div class="col-12">
 <div class="card">
-<div class="card-header">
+<div class="card-header" <?= displayNoneAdmin() ?>>
     <h3><i class="fa fa-users"></i> <?= $_users ?>
-      <span style="font-size: 14px">
+      <span style="font-size: 14px" >
         <?php
         if ($counttuser == 0) {
           echo "<script>window.location='./?hotspot=users&profile=all&session=" . $session . "</script>";
         } ?>
-         &nbsp; | &nbsp; <a href="./?hotspot-user=add&session=<?= $session; ?>" title="Add User"><i class="fa fa-user-plus"></i> <?= $_add ?></a>
+         &nbsp; | &nbsp; <a href="./?hotspot-user=add&session=<?= $session; ?>"  title="Add User"><i class="fa fa-user-plus"></i> <?= $_add ?></a>
         &nbsp; | &nbsp; <a href="./?hotspot-user=generate&session=<?= $session; ?>" title="Generate User"><i class="fa fa-users"></i> <?= $_generate ?></a>
          &nbsp; | &nbsp; <a href="<?= str_replace("=users", "=export-users", $url); ?>&export=script" title="Download User List as Mikrotik Script"><i class="fa fa-download"></i> Script</a>&nbsp; | &nbsp; <a href="<?= str_replace("=users", "=export-users", $url); ?>&export=csv" title="Download User List as CSV"><i class="fa fa-download"></i> CSV</a>
         </span>  &nbsp;
