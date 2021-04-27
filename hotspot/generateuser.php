@@ -409,7 +409,7 @@ date_default_timezone_set($_SESSION['timezone']);
 						if(type == "3GB-Fast"){
 							$("[name='datalimit']").val("3");
 						}
-						else if(type == "GameOn-1Days"){
+						else if(type == "GameOn-1Day"){
 							$("[name='datalimit']").val("");
 							$("[name='timelimit']").val("1d");
 						}
