@@ -394,7 +394,7 @@ date_default_timezone_set($_SESSION['timezone']);
 					}
 					else{
 						for ($i = 0; $i < $TotalReg; $i++) {
-							if($getprofile[$i]['name'] == 'GameOn-1Day' && $getprofile[$i]['name'] == 'Unli-1Day'){
+							if($getprofile[$i]['name'] == 'GameOn-1Day' || $getprofile[$i]['name'] == 'Unli-1Day'){
 								echo "<option>" . $getprofile[$i]['name'] . "</option>";
 							}
 						}
