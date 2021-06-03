@@ -386,11 +386,18 @@ date_default_timezone_set($_SESSION['timezone']);
 					} else {
 					}
 					$TotalReg = count($getprofile);
-					for ($i = 0; $i < $TotalReg; $i++) {
-						if(!checkAdmin() && $getprofile[$i]['name'] != 'default' && $getprofile[$i]['name'] != 'Unlimeted'){
+
+					if(checkAdmin()){
+						for ($i = 0; $i < $TotalReg; $i++) {
 							echo "<option>" . $getprofile[$i]['name'] . "</option>";
 						}
-						
+					}
+					else{
+						for ($i = 0; $i < $TotalReg; $i++) {
+							if($getprofile[$i]['name'] == 'GameOn-1Day' && $getprofile[$i]['name'] == 'Unli-1Day'){
+								echo "<option>" . $getprofile[$i]['name'] . "</option>";
+							}
+						}
 					}
 				?>
 			</select>
