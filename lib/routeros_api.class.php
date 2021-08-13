@@ -646,7 +646,7 @@ function randNULC($length) {
 
 
 function checkAdmin(){
-    return ($_SESSION['mikhmon'] == 'admin') ? true : false;
+    return ($_SESSION['session'] == 'admin') ? true : false;
 }
 
 function checkAndRedirect(){

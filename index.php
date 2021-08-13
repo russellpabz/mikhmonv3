@@ -37,7 +37,6 @@ $session = $_GET['session'];
 
 
 
-
 if (!isset($_SESSION["mikhmon"])) {
   header("Location:./admin.php?id=login");
 } elseif (empty($session)) {

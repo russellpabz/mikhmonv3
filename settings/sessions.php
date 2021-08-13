@@ -98,8 +98,8 @@ if (!isset($_SESSION["mikhmon"])) {
                                       <?= $_hotspot_name ?> : <?= explode('%', $data[$value][4])[1]; ?><br>
                                       <?= $_session_name ?> : <?= $value; ?><br>
                                       <span class="connect pointer"  id="<?= $value; ?>"><i class="fa fa-external-link"></i> <?= $_open ?></span>&nbsp;
-                                      <a href="./admin.php?id=settings&session=<?= $value; ?>"><i class="fa fa-edit"></i> <?= $_edit ?></a>&nbsp;
-                                      <a href="javascript:void(0)" onclick="if(confirm('Are you sure to delete data <?= $value;
+                                      <a <?= displayNoneAdmin(); ?> href="./admin.php?id=settings&session=<?= $value; ?>"><i class="fa fa-edit"></i> <?= $_edit ?></a>&nbsp;
+                                      <a <?= displayNoneAdmin(); ?> href="javascript:void(0)" onclick="if(confirm('Are you sure to delete data <?= $value;
                                       echo " (" . explode('%', $data[$value][4])[1] . ")"; ?>?')){loadpage('./admin.php?id=remove-session&session=<?= $value; ?>')}else{}"><i class="fa fa-remove"></i> <?= $_delete ?></a>
                                     </span>
 
