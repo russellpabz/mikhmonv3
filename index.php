@@ -24,7 +24,7 @@ error_reporting(0);
 
 
 
-ini_set("max_execution_time", 5); 
+ini_set("max_execution_time", 10); 
 date_default_timezone_set('Asia/Manila');
 
 define('ROOT', dirname(__FILE__));
