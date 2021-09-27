@@ -51,7 +51,7 @@ if(isset($_POST["submit"])){
     
     
 
-    $fp = fopen(ROOT ."./include/config.php", 'w');
+    $fp = fopen(ROOT ."/include/config.php", 'w');
     fwrite($fp, "<?php " .'$config'. " = json_decode('".json_encode($response) ."');");
     fclose($fp);
 
