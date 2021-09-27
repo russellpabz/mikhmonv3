@@ -17,5 +17,6 @@
   <!-- Your custom styles (optional) -->
   
 </head>
+
 <body class="<?= $page ?>-page <?= $body_class ?>">
 
