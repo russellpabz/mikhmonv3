@@ -19,7 +19,7 @@ if(!$API->connect($config->mikrotik->ip_address, $config->mikrotik->user, decryp
 // die();
 
 $result = $API->comm("/system/script/print", array(
-    "?owner" => "admin",
+    "?owner" => $config->mikrotik->user,
 ));
 
 $date = isset($_POST["date"]) ? $_POST["date"] : date('d F, Y');
