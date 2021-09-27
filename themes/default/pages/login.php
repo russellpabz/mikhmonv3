@@ -2,9 +2,9 @@
 
 $failed = false;
 
-if(isset($_SESSION["login"])){
-  header("Location:". url("/?page=home"));
-}
+// if(isset($_SESSION["login"])){
+//   header("Location:". url("/?page=home"));
+// }
 
 if(isset($_POST["submit"])){
 
@@ -15,12 +15,12 @@ if(isset($_POST["submit"])){
     
     $_SESSION["login"] = true;
 
-    if(!isset($config->mikrotik)){
-      header("Location:". url("/?page=settings"));
-    }
-    else{
+    // if(!isset($config->mikrotik)){
+    //   header("Location:". url("/?page=settings"));
+    // }
+    // else{
       header("Location:". url("/?page=home"));
-    }
+    //}
 
   }
   else{

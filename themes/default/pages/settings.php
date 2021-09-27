@@ -3,7 +3,7 @@
 $page = "register";
 
 
-$val = new Validation();
+
 
 
 // printing(sizeof($val->errors));
@@ -12,7 +12,8 @@ $val = new Validation();
 // die();
 
 if(isset($_POST["submit"])){
-
+  
+  $val = new Validation();
   
   $password = trim(encrypt($_POST["password"]));
   $account_password = trim(encrypt($_POST["account_password"]));
@@ -110,7 +111,7 @@ include(THEME ."partials/header.php");
 
 
     <!-- Intro Section -->
-    <section class="view intro-2">
+    <section class="view">
       <div class="mask rgba-gradient">
         <div class="container justify-content-center align-items-center">
 
