@@ -21,8 +21,8 @@ class RouterosAPI
     var $connected = false; //  Connection state
     var $port      = 8728;  //  Port to connect to (default 8729 for ssl)
     var $ssl       = false; //  Connect using SSL (must enable api-ssl in IP/Services)
-    var $timeout   = 3;     //  Connection attempt timeout and data read timeout
-    var $attempts  = 5;     //  Connection attempt count
+    var $timeout   = 1;     //  Connection attempt timeout and data read timeout
+    var $attempts  = 1;     //  Connection attempt count
     var $delay     = 3;     //  Delay between connection attempts in seconds
 
     var $socket;            //  Variable for storing socket resource
@@ -110,6 +110,10 @@ class RouterosAPI
                 $this->write('=name=' . $login, false);
                 $this->write('=password=' . $password);
                 $RESPONSE = $this->read(false);
+
+                // printing($RESPONSE);
+
+                // die();
                 
                 if (isset($RESPONSE[0])) {
                     
@@ -144,7 +148,7 @@ class RouterosAPI
                 fclose($this->socket);
                 
             }
-            sleep($this->delay);
+           // sleep($this->delay);
         }
 
         if ($this->connected) {

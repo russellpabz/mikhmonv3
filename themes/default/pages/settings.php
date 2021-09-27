@@ -6,6 +6,12 @@ $page = "register";
 $val = new Validation();
 
 
+// printing(sizeof($val->errors));
+
+// printing($val->errors);
+
+// die();
+
 if(isset($_POST["submit"])){
 
   
@@ -106,7 +112,7 @@ include(THEME ."partials/header.php");
       <div class="mask rgba-gradient">
         <div class="container justify-content-center align-items-center">
 
-          <form method="post" class="needs-validation <?php echo sizeof($val->getErrors()) ? "was-validated" : "" ?>" novalidate>
+          <form method="post" class="needs-validation <?php echo sizeof($val->errors) ? "was-validated" : "" ?>" novalidate>
 
             <!-- Grid row -->
             <div class="row pt-5">
