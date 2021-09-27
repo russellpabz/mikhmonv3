@@ -22,7 +22,7 @@ $result = $API->comm("/system/script/print", array(
 $date = isset($_POST["date"]) ? $_POST["date"] : date('d F, Y');
 
 
-$TotalReg = count($getData);
+//$TotalReg = count($getData);
 
 
 

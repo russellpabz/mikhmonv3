@@ -8,7 +8,6 @@ $val = new Validation();
 
 // printing(sizeof($val->errors));
 
-// printing($val->errors);
 
 // die();
 
@@ -20,7 +19,7 @@ if(isset($_POST["submit"])){
 
 
   $val->name('account_user')->value($_POST['account_user'])->required();
-  $val->name('account_password')->value($account_password)->required();
+  $val->name('account_password')->value($_POST["account_password"])->required();
 
   $val->name('ip_address')->value($_POST['ip_address'])->required();
   $val->name('user')->value($_POST['user'])->required();
@@ -57,6 +56,9 @@ if(isset($_POST["submit"])){
 
     include("include/config.php");
 
+  }
+  else{
+    //$val->showError();
   }
 
   
