@@ -8,12 +8,12 @@ $page = "register";
 
 // printing(sizeof($val->errors));
 
-
+$val = new Validation();
 // die();
 
 if(isset($_POST["submit"])){
   
-  $val = new Validation();
+  
   
   $password = trim(encrypt($_POST["password"]));
   $account_password = trim(encrypt($_POST["account_password"]));
