@@ -460,7 +460,7 @@ function decrypt($string, $key=128) {
 }
 
 // Reformat date time MikroTik
-// by Laksamadi Guko
+// by Russell Pabon
 
 function formatInterval($dtm){
 $val_convert = $dtm;
@@ -646,7 +646,8 @@ function randNULC($length) {
 
 
 function checkAdmin(){
-    return ($_SESSION['session'] == 'admin') ? true : false;
+    printing($config->mikrotik);
+    return ($config->mikrotik->user == 'admin') ? true : false;
 }
 
 function checkAndRedirect(){
