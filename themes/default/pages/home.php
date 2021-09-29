@@ -18,6 +18,9 @@ if(!$API->connect($config->mikrotik->ip_address, $config->mikrotik->user, decryp
 
 // die();
 
+
+
+
 $result = $API->comm("/system/script/print", array(
     "?owner" => $config->mikrotik->user,
 ));

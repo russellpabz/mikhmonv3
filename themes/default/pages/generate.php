@@ -62,13 +62,15 @@ if(isset($_POST["submit"])){
       "comment" => "sales"
     ));
 
+
+
     //system script add name="$date-|-$time-|-$user-|-10-|-$address-|-$mac-|-1d-|-GameOn-1Day-|-$comment" owner="$month$year" source=$date comment=mikhmon; 
 
   }
 
-  
 
 }
+
 
 
 
@@ -188,8 +190,6 @@ include(THEME ."partials/header.php");
 
         <hr>
 
-       
-
       </div>
 
       <?php if(isset($_POST["submit"]) && $val->isSuccess()): ?>
@@ -301,4 +301,12 @@ include(THEME ."partials/header.php");
   <!-- Footer -->
   
 
-  <?php include(THEME ."partials/footer.php"); ?>
+  <?php 
+  
+  
+  unset($_POST);
+  $_POST = array();
+
+  include(THEME ."partials/footer.php"); 
+  
+  ?>
