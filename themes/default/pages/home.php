@@ -164,6 +164,8 @@ include(THEME ."partials/header.php");
                         <label for="date-picker-example">From</label>
                     </div>
                 </div>
+
+                <?php if($config->mikrotik->user == "admin"): ?>
                 <div class="col-lg-3 col-md-12">
                     <div class="md-form">
                       <select class="mdb-select md-form" name="user">
@@ -174,6 +176,7 @@ include(THEME ."partials/header.php");
                       </select>
                     </div>
                 </div>
+                <?php endif; ?>
             </div>
 
 
