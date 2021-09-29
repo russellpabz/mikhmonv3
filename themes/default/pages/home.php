@@ -160,6 +160,16 @@ include(THEME ."partials/header.php");
                         <label for="date-picker-example">From</label>
                     </div>
                 </div>
+                <div class="col-lg-3 col-md-12">
+                    <div class="md-form">
+                      <select class="mdb-select md-form">
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="admin">Admin</option>
+                        <option value="julian">Julian</option>
+                        <option value="jeselle">Jeselle</option>
+                      </select>
+                    </div>
+                </div>
             </div>
 
 
