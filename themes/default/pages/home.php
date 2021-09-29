@@ -19,10 +19,14 @@ if(!$API->connect($config->mikrotik->ip_address, $config->mikrotik->user, decryp
 // die();
 
 
+$user = $config->mikrotik->user;
 
+if(isset($_POST["user"]) && $config->mikrotik->user == "admin"){
+  $user = $_POST["user"];
+}
 
 $result = $API->comm("/system/script/print", array(
-    "?owner" => $config->mikrotik->user,
+    "?owner" => $user,
 ));
 
 $date = isset($_POST["date"]) ? $_POST["date"] : date('d F, Y');
@@ -162,7 +166,7 @@ include(THEME ."partials/header.php");
                 </div>
                 <div class="col-lg-3 col-md-12">
                     <div class="md-form">
-                      <select class="mdb-select md-form">
+                      <select class="mdb-select md-form" name="user">
                         <option value="" disabled selected>Choose your option</option>
                         <option value="admin">Admin</option>
                         <option value="julian">Julian</option>
