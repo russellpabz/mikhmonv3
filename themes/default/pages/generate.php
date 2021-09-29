@@ -32,7 +32,7 @@ if(isset($_POST["submit"])){
 
   $val->name('comment')->value($comment)->required();
 
-  if($val->isSuccess()){
+  if($_POST["comment"] != "" && $val->isSuccess()){
 
 
     $ticket = substr(str_shuffle("0123456789"), 0, 8);
@@ -192,7 +192,7 @@ include(THEME ."partials/header.php");
 
       </div>
 
-      <?php if(isset($_POST["submit"]) && $val->isSuccess()): ?>
+      <?php if($_POST["comment"] != "" && $val->isSuccess()): ?>
 
       <div class="card card-cascade cascading-admin-card">
 
@@ -219,7 +219,7 @@ include(THEME ."partials/header.php");
 
       <?php else: ?>
 
-      <form method="post" action="<?= url("?page=generate&rand=". rand(8,10)) ?>" class="needs-validation <?php echo sizeof($val->errors) ? "was-validated" : "" ?>" novalidate>
+      <form method="post" action="<?= url("?page=generate") ?>" class="needs-validation <?php echo sizeof($val->errors) ? "was-validated" : "" ?>" novalidate>
       
      
 
