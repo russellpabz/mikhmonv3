@@ -23,7 +23,7 @@
 
       // Data Picker Initialization
       $('.datepicker').pickadate();
-      $('.datepicker').change(function(){
+      $('.datepicker, select[name="user"]').change(function(){
         $('form').trigger('submit');
       });
 
