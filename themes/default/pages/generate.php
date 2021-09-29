@@ -219,7 +219,7 @@ include(THEME ."partials/header.php");
 
       <?php else: ?>
 
-      <form method="post" class="needs-validation <?php echo sizeof($val->errors) ? "was-validated" : "" ?>" novalidate>
+      <form method="post" action="<?= url("?page=generate") ?>" class="needs-validation <?php echo sizeof($val->errors) ? "was-validated" : "" ?>" novalidate>
       
      
 
