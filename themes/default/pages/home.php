@@ -172,7 +172,7 @@ include(THEME ."partials/header.php");
                         <option value="" disabled selected>Choose your option</option>
                         <option <?php echo ($_POST["user"] == "admin") ? "selected" : "" ?> value="admin">Admin</option>
                         <option <?php echo ($_POST["user"] == "julian") ? "selected" : "" ?> value="julian">Julian</option>
-                        <option <?php echo ($_POST["user"] == "jeselle") ? "selected" : "" ?> value="jeselle">Jeselle</option>
+                        <option <?php echo ($_POST["user"] == "geselle") ? "selected" : "" ?> value="geselle">Geselle</option>
                       </select>
                     </div>
                 </div>
