@@ -37,12 +37,16 @@ require_once("include/formatbytesbites.php");
 
 require_once("include/routeros_api.class.php");
 
+$API = new RouterosAPI(); 
 
-if($_SESSION["login"] == false && $_GET["page"] != "login"){
-   // header("Location:". url("/?page=login"));
+if (!$API->connect($config->mikrotik->ip_address, $config->mikrotik->user, decrypt($config->mikrotik->password)) && $_GET["page"] != "settings"){
+    header("Location:". url("/?page=settings"));
+}
+else if($_SESSION["login"] == false && $_GET["page"] != "login"){
+    header("Location:". url("/?page=login"));
 }
 
-$API = new RouterosAPI(); 
+
 
 ob_start("ob_gzhandler");
 
