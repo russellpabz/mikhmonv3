@@ -23,7 +23,7 @@ $profile = $API->comm("/ip/hotspot/user/profile/print", array(
 
 
 
-if(isset($_POST["submit"])){
+if(isset($_POST["submit"]) && trim($_POST["comment"]) != ""){
 
   $val = new Validation();
 
@@ -31,7 +31,7 @@ if(isset($_POST["submit"])){
 
   $val->name('comment')->value($comment)->required();
 
-  if($_POST["comment"] != "" && $val->isSuccess()){
+  if($val->isSuccess()){
 
 
     $ticket = substr(str_shuffle("0123456789"), 0, 8);
