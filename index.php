@@ -39,7 +39,7 @@ require_once("include/routeros_api.class.php");
 
 
 if(!isset($_SESSION["login"]) && $_GET["page"] != "login"){
-    header("Location:". url("/?page=login"));
+  //  header("Location:". url("/?page=login"));
 }
 
 $API = new RouterosAPI(); 
