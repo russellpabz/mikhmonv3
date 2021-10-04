@@ -23,7 +23,7 @@ $profile = $API->comm("/ip/hotspot/user/profile/print", array(
 
 
 
-if(isset($_POST["submit"]) && trim($_POST["comment"]) != "" ){
+if(isset($_POST["submit"])){
 
   $val = new Validation();
 
@@ -31,7 +31,7 @@ if(isset($_POST["submit"]) && trim($_POST["comment"]) != "" ){
 
   $val->name('comment')->value($comment)->required();
 
-  if($val->isSuccess()){
+  if($_POST["comment"] != "" && $val->isSuccess()){
 
 
     $ticket = substr(str_shuffle("0123456789"), 0, 8);
@@ -66,6 +66,7 @@ if(isset($_POST["submit"]) && trim($_POST["comment"]) != "" ){
     //system script add name="$date-|-$time-|-$user-|-10-|-$address-|-$mac-|-1d-|-GameOn-1Day-|-$comment" owner="$month$year" source=$date comment=mikhmon; 
 
   }
+
 
 }
 else{
