@@ -146,7 +146,7 @@ include(THEME ."partials/header.php");
       </div>
 
 
-      <form method="post" action="<?= url("?page=ticket") ?>" class="needs-validation <?php echo sizeof($val->errors) ? "was-validated" : "" ?>" novalidate>
+      <form method="post" action="<?= url("?page=ticket") ?>" class="needs-validation " novalidate>
       
      
 
