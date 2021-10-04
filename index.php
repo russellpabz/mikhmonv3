@@ -19,7 +19,7 @@
  
 session_start();
 // hide all error
-error_reporting(0);
+//error_reporting(0);
 // check url
 
 
@@ -39,10 +39,12 @@ require_once("include/routeros_api.class.php");
 
 $API = new RouterosAPI(); 
 
-if (!$API->connect($config->mikrotik->ip_address, $config->mikrotik->user, decrypt($config->mikrotik->password)) && $_GET["page"] != "settings"){
+$page = trim($_GET["page"]);
+
+if (!$API->connect($config->mikrotik->ip_address, $config->mikrotik->user, decrypt($config->mikrotik->password)) && $page != "settings"){
     header("Location:". url("/?page=settings"));
 }
-else if($_SESSION["login"] == false && $_GET["page"] != "login"){
+else if($_SESSION["login"] == false && $page != "login"){
     header("Location:". url("/?page=login"));
 }
 
@@ -50,6 +52,5 @@ else if($_SESSION["login"] == false && $_GET["page"] != "login"){
 
 ob_start("ob_gzhandler");
 
-$page = $_GET["page"];
 
 include("themes/default/index.php");
