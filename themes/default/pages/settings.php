@@ -11,59 +11,59 @@ $page = "register";
 $val = new Validation();
 // die();
 
-if(isset($_POST["submit"])){
+// if(isset($_POST["submit"])){
   
   
   
-  $password = trim(encrypt($_POST["password"]));
-  $account_password = trim(encrypt($_POST["account_password"]));
+//   $password = trim(encrypt($_POST["password"]));
+//   $account_password = trim(encrypt($_POST["account_password"]));
 
 
-  $val->name('account_user')->value($_POST['account_user'])->required();
-  $val->name('account_password')->value($_POST["account_password"])->required();
+//   $val->name('account_user')->value($_POST['account_user'])->required();
+//   $val->name('account_password')->value($_POST["account_password"])->required();
 
-  $val->name('ip_address')->value($_POST['ip_address'])->required();
-  $val->name('user')->value($_POST['user'])->required();
-  $val->name('password')->value($password)->required();
+//   $val->name('ip_address')->value($_POST['ip_address'])->required();
+//   $val->name('user')->value($_POST['user'])->required();
+//   $val->name('password')->value($password)->required();
 
-  $val->name('dns')->value($_POST['dns'])->required();
-  $val->name('currency')->value($_POST['currency'])->required();
+//   $val->name('dns')->value($_POST['dns'])->required();
+//   $val->name('currency')->value($_POST['currency'])->required();
 
   
-  if($val->isSuccess()){
+//   if($val->isSuccess()){
    
-    $response = array(
-      "user" => array(
-        "account_user"     => $_POST["account_user"],
-        "account_password" => $account_password
-      ),
-      "mikrotik" => array(
-        "ip_address" => $_POST["ip_address"],
-        "user"       => $_POST["user"],
-        "password"   => $password
-      ),
-      "settings" => array(
-        "currency" => $_POST["currency"],
-        "dns"      => $_POST["dns"]
-      )   
-    );
+//     $response = array(
+//       "user" => array(
+//         "account_user"     => $_POST["account_user"],
+//         "account_password" => $account_password
+//       ),
+//       "mikrotik" => array(
+//         "ip_address" => $_POST["ip_address"],
+//         "user"       => $_POST["user"],
+//         "password"   => $password
+//       ),
+//       "settings" => array(
+//         "currency" => $_POST["currency"],
+//         "dns"      => $_POST["dns"]
+//       )   
+//     );
 
     
     
 
-    $fp = fopen(ROOT ."/include/config.php", 'w');
-    fwrite($fp, "<?php " .'$config'. " = json_decode('".json_encode($response) ."');");
-    fclose($fp);
+//     $fp = fopen(ROOT ."/include/config.php", 'w');
+//     fwrite($fp, "<?php " .'$config'. " = json_decode('".json_encode($response) ."');");
+//     fclose($fp);
 
-    include("include/config.php");
+//     include("include/config.php");
 
-  }
-  else{
-    //$val->showError();
-  }
+//   }
+//   else{
+//     //$val->showError();
+//   }
 
   
-}
+// }
 
 
 
