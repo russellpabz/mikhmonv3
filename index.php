@@ -37,6 +37,9 @@ require_once("include/formatbytesbites.php");
 
 require_once("include/routeros_api.class.php");
 
+printing($_SESSION);
+die();
+
 
 if(!isset($_SESSION["login"]) && $_GET["page"] != "login"){
     header("Location:". url("/?page=login"));
