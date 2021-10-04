@@ -5,7 +5,7 @@ $page = "generate";
 
 $body_class = "fixed-sn white-skin";
 
-$testt = $API->connect($config->mikrotik->ip_address, $config->mikrotik->user, decrypt($config->mikrotik->password));
+//$testt = $API->connect($config->mikrotik->ip_address, $config->mikrotik->user, decrypt($config->mikrotik->password));
 
 // $getData = $API->comm("/system/script/print", array(
 //     "?comment" => "sales",
@@ -23,7 +23,7 @@ $profile = $API->comm("/ip/hotspot/user/profile/print", array(
 
 
 
-if(isset($_POST["submit"])){
+if(isset($_POST["submit"]) && trim($_POST["comment"]) != "" ){
 
   $val = new Validation();
 
@@ -31,7 +31,7 @@ if(isset($_POST["submit"])){
 
   $val->name('comment')->value($comment)->required();
 
-  if($_POST["comment"] != "" && $val->isSuccess()){
+  if($val->isSuccess()){
 
 
     $ticket = substr(str_shuffle("0123456789"), 0, 8);
@@ -66,7 +66,6 @@ if(isset($_POST["submit"])){
     //system script add name="$date-|-$time-|-$user-|-10-|-$address-|-$mac-|-1d-|-GameOn-1Day-|-$comment" owner="$month$year" source=$date comment=mikhmon; 
 
   }
-
 
 }
 else{
