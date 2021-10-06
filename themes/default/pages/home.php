@@ -205,7 +205,7 @@ include(THEME ."partials/header.php");
                             <?php $total = 0; ?>
                             <?php $id = 1; ?>
 
-                            <?php if(iszeof($result) > 0): ?>
+                            <?php if(sizeof($result) > 0): ?>
 
                               <?php foreach($result as $row): ?>
                           
