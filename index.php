@@ -39,7 +39,7 @@ require_once("include/routeros_api.class.php");
 
 $API = new RouterosAPI(); 
 
-$page = trim($_GET["page"]);
+$page = isset($_GET["page"]) ? trim($_GET["page"]) : "login";
 
 if (!$API->connect($config->mikrotik->ip_address, $config->mikrotik->user, decrypt($config->mikrotik->password)) && $page != "settings"){
     header("Location:". url("/?page=settings"));

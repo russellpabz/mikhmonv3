@@ -209,6 +209,7 @@ include(THEME ."partials/header.php");
           <h3 class="text-center text-success font-weight-bold dark-grey-text"><?= $ticket ; ?></h3>
           <hr>
           <h5 class="text-center dark-grey-text"><?= $result["profile"]; ?></h5>
+          <h6 class="text-center dark-grey-text"><?= $_POST["comment"]; ?></h6>
           <div class="text-center">
             <a href="<?= url("?page=generate") ?>" class="btn btn-primary mt-3 mb-3">Generate</a>
           </div>
