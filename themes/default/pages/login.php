@@ -23,6 +23,7 @@ else if(isset($_POST["submit"])){
 
   }
   else{
+    $_SESSION["login"] = false;
     $failed = true;
   }
 

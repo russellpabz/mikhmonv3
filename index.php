@@ -28,7 +28,7 @@ error_reporting(E_ALL);
 
 
 
-ini_set("max_execution_time", 10); 
+ini_set("max_execution_time", 20); 
 date_default_timezone_set('Asia/Manila');
 
 define('ROOT', dirname(__FILE__));
@@ -47,6 +47,7 @@ $page = isset($_GET["page"]) ? trim($_GET["page"]) : "login";
 
 
 if(!isset($_SESSION["login"]) && $page != "login"){
+    $_SESSION["login"] = false;
     header("Location:". url("/?page=login"));
  }
 
