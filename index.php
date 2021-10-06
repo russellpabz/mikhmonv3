@@ -39,15 +39,15 @@ require_once("include/routeros_api.class.php");
 
 $API = new RouterosAPI(); 
 
-$page =  "login";
+$page = isset($_GET["page"]) ? trim($_GET["page"]) : "login";
 $connection = false;
 
  
 if(!isset($_SESSION["login"]) && $page != "login"){
-    header("Location:". url("/?page=login"));
+    //header("Location:". url("/?page=login"));
 }
 else if(!$API->connect($config->mikrotik->ip_address, $config->mikrotik->user, decrypt($config->mikrotik->password)) && $page != "settings"){
-    header("Location:". url("/?page=settings"));
+   // header("Location:". url("/?page=settings"));
 }
 
 $connection = true;
