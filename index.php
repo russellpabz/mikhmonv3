@@ -45,6 +45,8 @@ $API = new RouterosAPI();
 
 $page = isset($_GET["page"]) ? trim($_GET["page"]) : "login";
 
+$connection = false;
+
 
 if(!isset($_SESSION["login"]) && $page != "login"){
     $_SESSION["login"] = false;
@@ -53,9 +55,6 @@ if(!isset($_SESSION["login"]) && $page != "login"){
 else if(!$API->connect($config->mikrotik->ip_address, $config->mikrotik->user, decrypt($config->mikrotik->password)) && $page != "settings"){
    header("Location:". url("/?page=settings"));
 }
-
-
-
 
 
 

@@ -14,7 +14,7 @@ $val = new Validation();
 
 if(isset($_POST["submit"])){
   
-  $connection = false;
+  
   
   $password = trim(encrypt($_POST["password"]));
   $account_password = trim(encrypt($_POST["account_password"]));
