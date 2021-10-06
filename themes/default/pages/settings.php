@@ -56,7 +56,7 @@ if(isset($_POST["submit"])){
     fwrite($fp, "<?php " .'$config'. " = json_decode('".json_encode($response) ."');");
     fclose($fp);
 
-    include("include/config.php");
+    include(ROOT ."/include/config.php");
 
     if($API->connect($config->mikrotik->ip_address, $config->mikrotik->user, decrypt($config->mikrotik->password)) && $page != "settings"){
       $connection = false;
