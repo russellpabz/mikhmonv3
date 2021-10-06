@@ -16,11 +16,7 @@ $body_class = "fixed-sn white-skin";
 // die();
 
 
-$user = $config->mikrotik->user;
-
-if(isset($_POST["user"]) && $config->mikrotik->user == "admin"){
-  $user = $_POST["user"];
-}
+$user = isset($_POST["user"]) ? $_POST["user"] : $config->mikrotik->user;
 
 $result = $API->comm("/system/script/print", array(
     "?owner" => $user,
@@ -163,16 +159,16 @@ include(THEME ."partials/header.php");
                 </div>
 
                 <?php if($config->mikrotik->user == "admin"): ?>
-                <div class="col-lg-3 col-md-12">
-                    <div class="md-form">
-                      <select class="mdb-select md-form" name="user">
-                        <option value="" disabled selected>Choose your option</option>
-                        <option <?php echo ($_POST["user"] == "admin") ? "selected" : "" ?> value="admin">Admin</option>
-                        <option <?php echo ($_POST["user"] == "julian") ? "selected" : "" ?> value="julian">Julian</option>
-                        <option <?php echo ($_POST["user"] == "geselle") ? "selected" : "" ?> value="geselle">Geselle</option>
-                      </select>
-                    </div>
-                </div>
+                  <div class="col-lg-3 col-md-12">
+                      <div class="md-form">
+                        <select class="mdb-select md-form" name="user">
+                          <option value="" disabled selected>Choose your option</option>
+                          <option <?php echo ($_POST["user"] == "admin") ? "selected" : "" ?> value="admin">Admin</option>
+                          <option <?php echo ($_POST["user"] == "julian") ? "selected" : "" ?> value="julian">Julian</option>
+                          <option <?php echo ($_POST["user"] == "geselle") ? "selected" : "" ?> value="geselle">Geselle</option>
+                        </select>
+                      </div>
+                  </div>
                 <?php endif; ?>
             </div>
 
