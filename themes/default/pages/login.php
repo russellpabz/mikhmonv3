@@ -4,7 +4,7 @@ $failed = false;
 
 if(isset($_POST["submit"])){
 
-  printing($_POST);
+ // printing($_POST);
 
   $username = trim($_POST["username"]);
   $password = trim($_POST["password"]);
