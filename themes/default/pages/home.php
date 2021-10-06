@@ -205,29 +205,32 @@ include(THEME ."partials/header.php");
                             <?php $total = 0; ?>
                             <?php $id = 1; ?>
 
+                            <?php if(iszeof($result) > 0): ?>
 
-                            <?php foreach($result as $row): ?>
-                        
-                            <?php $data = explode('|', $row['name']); ?>
+                              <?php foreach($result as $row): ?>
+                          
+                              <?php $data = explode('|', $row['name']); ?>
 
-                            <?php if(date("d", strtotime($row['source'])) == date("d", strtotime($date))): ?>
+                              <?php if(date("d", strtotime($row['source'])) == date("d", strtotime($date))): ?>
 
-                            <?php $price = str_replace("Php","", $data[2]); ?>
+                              <?php $price = str_replace("Php","", $data[2]); ?>
 
-                            <tr>
-                                <td><?= $id++; ?></td>
-                                <td><?= $row['source']; ?></td>
-                                <td><strong><?= checkAdmin($config) ? $data[0] : substr($data[0], 0, 4) ."...."; ?></strong></td>
-                                <td><?= explode(' : ', $data[1])[1]; ?></td>
-                                <td><?= $data[3]; ?></td>
-                                <td><?= $price; ?></td>
-                            </tr>
+                              <tr>
+                                  <td><?= $id++; ?></td>
+                                  <td><?= $row['source']; ?></td>
+                                  <td><strong><?= checkAdmin($config) ? $data[0] : substr($data[0], 0, 4) ."...."; ?></strong></td>
+                                  <td><?= explode(' : ', $data[1])[1]; ?></td>
+                                  <td><?= $data[3]; ?></td>
+                                  <td><?= $price; ?></td>
+                              </tr>
 
-                            <?php $total += $price; ?>
-                            
+                              <?php $total += $price; ?>
+                              
+                              <?php endif; ?>
+
+                              <?php endforeach; ?>
+
                             <?php endif; ?>
-
-                            <?php endforeach; ?>
 
                         </tbody>
                     </table>
