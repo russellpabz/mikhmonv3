@@ -2,7 +2,7 @@
 
 $failed = false;
 
-if(isset($_SESSION["login"]) && $_SESSION["login"] == true){
+if(!isset($_SESSION["login"]) && $_SESSION["login"] == true){
   header("Location:". url("/?page=home"));
 }
 else if(isset($_POST["submit"])){
