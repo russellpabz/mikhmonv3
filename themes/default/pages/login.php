@@ -2,6 +2,7 @@
 
 $failed = false;
 
+
 if(isset($_POST["submit"])){
 
   $username = trim($_POST["username"]);
