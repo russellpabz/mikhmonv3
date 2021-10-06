@@ -48,7 +48,7 @@ $page = isset($_GET["page"]) ? trim($_GET["page"]) : "login";
 $connection = false;
 
 
-if((!isset($_SESSION["login"]) && $page != "login") || $_SESSION["login"] == false){
+if(!isset($_SESSION["login"]) && $page != "login"){
     $_SESSION["login"] = false;
     header("Location:". url("/?page=login"));
 }
