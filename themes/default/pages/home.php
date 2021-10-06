@@ -219,7 +219,7 @@ include(THEME ."partials/header.php");
                                 <td><?= $price; ?></td>
                             </tr>
 
-                            <?php $total += $price; ?>
+                            <?php $total += (int)$price; ?>
                             
                             <?php endif; ?>
 
