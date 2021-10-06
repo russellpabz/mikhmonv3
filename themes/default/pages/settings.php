@@ -5,7 +5,6 @@ $page = "register";
 
 
 
-
 // printing(sizeof($val->errors));
 
 $val = new Validation();
@@ -59,7 +58,7 @@ if(isset($_POST["submit"])){
 
   }
   else{
-    $connection = false;
+   
     //$val->showError();
   }
 
@@ -67,6 +66,10 @@ if(isset($_POST["submit"])){
 }
 
 
+$connection = false;
+if($API->connect($config->mikrotik->ip_address, $config->mikrotik->user, decrypt($config->mikrotik->password))){
+  $connection = true;
+}
 
 
 
