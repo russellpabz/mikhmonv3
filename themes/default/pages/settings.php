@@ -11,8 +11,8 @@ $page = "register";
 $val = new Validation();
 // die();
 
+
 if(isset($_POST["submit"])){
-  
   
   
   $password = trim(encrypt($_POST["password"]));

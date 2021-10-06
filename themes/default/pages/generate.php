@@ -5,7 +5,7 @@ $page = "generate";
 
 $body_class = "fixed-sn white-skin";
 
-$testt = $API->connect($config->mikrotik->ip_address, $config->mikrotik->user, decrypt($config->mikrotik->password));
+//$testt = $API->connect($config->mikrotik->ip_address, $config->mikrotik->user, decrypt($config->mikrotik->password));
 
 // $getData = $API->comm("/system/script/print", array(
 //     "?comment" => "sales",

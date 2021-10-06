@@ -5,9 +5,6 @@ $page = "home";
 
 $body_class = "fixed-sn white-skin";
 
-if(!$API->connect($config->mikrotik->ip_address, $config->mikrotik->user, decrypt($config->mikrotik->password))){
-  header("Location:". url("/?page=settings"));
-}
 
 
 // $getData = $API->comm("/system/script/print", array(
