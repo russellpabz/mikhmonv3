@@ -47,13 +47,10 @@ if(!isset($_SESSION["login"]) && $page != "login"){
     header("Location:". url("/?page=login"));
 }
 else if(!$API->connect($config->mikrotik->ip_address, $config->mikrotik->user, decrypt($config->mikrotik->password)) && $page != "settings"){
-   // header("Location:". url("/?page=settings"));
-}
-else{
-    $connection = true;
+    header("Location:". url("/?page=settings"));
 }
 
-
+$connection = true;
 
 //ob_start("ob_gzhandler");
 
