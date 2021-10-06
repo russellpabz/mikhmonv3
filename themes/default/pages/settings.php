@@ -131,7 +131,7 @@ include(THEME ."partials/header.php");
                     </h2>
                     <hr>
 
-                    <?php  if ($API->connect($config->mikrotik->ip_address, $config->mikrotik->user, decrypt($config->mikrotik->password))) : ?>
+                    <?php  if ($connection) : ?>
 
                       <div class="alert alert-success" role="alert">
                         Connected!

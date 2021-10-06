@@ -40,6 +40,7 @@ require_once("include/routeros_api.class.php");
 $API = new RouterosAPI(); 
 
 $page = isset($_GET["page"]) ? trim($_GET["page"]) : "login";
+$connection = false;
 
 if (!$API->connect($config->mikrotik->ip_address, $config->mikrotik->user, decrypt($config->mikrotik->password)) && $page != "settings"){
     header("Location:". url("/?page=settings"));
@@ -48,7 +49,7 @@ else if(!isset($_SESSION["login"]) && $page != "login"){
     header("Location:". url("/?page=login"));
 }
 
-
+$connection = true;
 
 //ob_start("ob_gzhandler");
 
