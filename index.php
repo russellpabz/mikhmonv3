@@ -42,11 +42,12 @@ $API = new RouterosAPI();
 $page = isset($_GET["page"]) ? trim($_GET["page"]) : "login";
 $connection = false;
 
-if (!$API->connect($config->mikrotik->ip_address, $config->mikrotik->user, decrypt($config->mikrotik->password)) && $page != "settings"){
-    header("Location:". url("/?page=settings"));
-}
-else if(!isset($_SESSION["login"]) && $page != "login"){
+
+if(!isset($_SESSION["login"]) && $page != "login"){
     header("Location:". url("/?page=login"));
+}
+else if(!$API->connect($config->mikrotik->ip_address, $config->mikrotik->user, decrypt($config->mikrotik->password)) && $page != "settings"){
+    header("Location:". url("/?page=settings"));
 }
 
 $connection = true;
