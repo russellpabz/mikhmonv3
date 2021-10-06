@@ -2,31 +2,31 @@
 
 $failed = false;
 
-// if(isset($_SESSION["login"])){
-//   header("Location:". url("/?page=home"));
-// }
-// else if(isset($_POST["submit"])){
+if(isset($_SESSION["login"])){
+  header("Location:". url("/?page=home"));
+}
+else if(isset($_POST["submit"])){
 
-//   $username = trim($_POST["username"]);
-//   $password = trim($_POST["password"]);
+  $username = trim($_POST["username"]);
+  $password = trim($_POST["password"]);
 
-//   if($config->user->account_user == $username && decrypt($config->user->account_password) == $password){
+  if($config->user->account_user == $username && decrypt($config->user->account_password) == $password){
     
-//     $_SESSION["login"] = true;
+    $_SESSION["login"] = true;
 
-//     // if(!isset($config->mikrotik)){
-//     //   header("Location:". url("/?page=settings"));
-//     // }
-//     // else{
-//       header("Location:". url("/?page=home"));
-//     //}
+    // if(!isset($config->mikrotik)){
+    //   header("Location:". url("/?page=settings"));
+    // }
+    // else{
+      header("Location:". url("/?page=home"));
+    //}
 
-//   }
-//   else{
-//     $failed = true;
-//   }
+  }
+  else{
+    $failed = true;
+  }
 
-// }
+}
 
 
 include(THEME ."partials/header.php");

@@ -39,7 +39,7 @@ require_once("include/routeros_api.class.php");
 
 $API = new RouterosAPI(); 
 
-$page = isset($_GET["page"]) ? trim($_GET["page"]) : "login";
+$page =  "login";
 $connection = false;
 
  
