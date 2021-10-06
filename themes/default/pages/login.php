@@ -2,10 +2,7 @@
 
 $failed = false;
 
-if(!isset($_SESSION["login"]) && $_SESSION["login"] == true){
-  header("Location:". url("/?page=home"));
-}
-else if(isset($_POST["submit"])){
+if(isset($_POST["submit"])){
 
   $username = trim($_POST["username"]);
   $password = trim($_POST["password"]);
