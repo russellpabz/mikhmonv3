@@ -56,6 +56,7 @@ if(isset($_POST["submit"])){
     fwrite($fp, "<?php " .'$config'. " = json_decode('".json_encode($response) ."');");
     fclose($fp);
 
+    require_once("include/config.php");
 
     if($API->connect($_POST["ip_address"], $_POST["user"], decrypt($password)) && $page != "settings"){
       $connection = true;
