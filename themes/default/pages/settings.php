@@ -59,6 +59,7 @@ if(isset($_POST["submit"])){
 
   }
   else{
+    $connection = false;
     //$val->showError();
   }
 
