@@ -14,7 +14,7 @@ $val = new Validation();
 
 if(isset($_POST["submit"])){
   
-  
+  $connection = false;
   
   $password = trim(encrypt($_POST["password"]));
   $account_password = trim(encrypt($_POST["account_password"]));
@@ -56,10 +56,9 @@ if(isset($_POST["submit"])){
     fwrite($fp, "<?php " .'$config'. " = json_decode('".json_encode($response) ."');");
     fclose($fp);
 
-    include(ROOT ."/include/config.php");
 
-    if($API->connect($config->mikrotik->ip_address, $config->mikrotik->user, decrypt($config->mikrotik->password)) && $page != "settings"){
-      $connection = false;
+    if($API->connect($_POST["ip_address"], $_POST["user"], decrypt($password)) && $page != "settings"){
+      $connection = true;
     }  
    
 

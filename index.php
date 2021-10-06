@@ -34,7 +34,7 @@ date_default_timezone_set('Asia/Manila');
 define('ROOT', dirname(__FILE__));
 define('THEME', ROOT ."/themes/default/");
 
-include(ROOT ."/include/config.php");
+require_once("include/config.php");
 
 require_once("include/validation.php");
 require_once("include/formatbytesbites.php");
