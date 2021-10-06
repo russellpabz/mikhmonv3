@@ -49,11 +49,11 @@ if(isset($_POST["submit"])){
       )   
     );
 
-    
-    
+    $config = json_decode (json_encode ($response), false);
+
 
     $fp = fopen(ROOT ."/include/config.php", 'w');
-    fwrite($fp, "<?php " .'$config'. " = json_decode('".json_encode($response) ."');");
+    fwrite($fp, "<?php " .'$config'. " = json_decode('". json_encode ($response) ."');");
     fclose($fp);
 
     require_once("include/config.php");
