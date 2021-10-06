@@ -52,7 +52,7 @@ if((!isset($_SESSION["login"]) || $_SESSION["login"] == false) && $page != "logi
     $_SESSION["login"] = false;
     header("Location:". url("/?page=login"));
 }
-else if(!$API->connect($config->mikrotik->ip_address, $config->mikrotik->user, decrypt($config->mikrotik->password)) && $page != "settings"){
+else if(!$API->connect($config->mikrotik->ip_address, $config->mikrotik->user, decrypt($config->mikrotik->password)) && ($page != "settings" || $page != "login")){
    header("Location:". url("/?page=settings"));
 }
 
