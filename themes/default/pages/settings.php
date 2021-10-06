@@ -14,6 +14,7 @@ $val = new Validation();
 
 if(isset($_POST["submit"])){
   
+  $connection = false;
   
   $password = trim(encrypt($_POST["password"]));
   $account_password = trim(encrypt($_POST["account_password"]));
@@ -57,9 +58,14 @@ if(isset($_POST["submit"])){
 
     include("include/config.php");
 
+    if($API->connect($config->mikrotik->ip_address, $config->mikrotik->user, decrypt($config->mikrotik->password)) && $page != "settings"){
+      $connection = false;
+    }  
+   
+
   }
   else{
-    //$val->showError();
+    $val->showError();
   }
 
   
