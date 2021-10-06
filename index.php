@@ -42,6 +42,7 @@ $API = new RouterosAPI();
 $page = isset($_GET["page"]) ? trim($_GET["page"]) : "login";
 $connection = false;
 
+ 
 
 if(!isset($_SESSION["login"]) && $page != "login"){
     header("Location:". url("/?page=login"));
