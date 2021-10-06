@@ -70,6 +70,14 @@ if(isset($_POST["submit"])){
 
   
 }
+else{
+
+  $connection = false;
+  if($API->connect($config->mikrotik->ip_address, $config->mikrotik->user, decrypt($config->mikrotik->password))){
+    $connection = true;
+  }
+  
+}
 
 
 
