@@ -36,10 +36,8 @@ define('ROOT', dirname(__FILE__));
 define('THEME', ROOT ."/themes/default/");
 
 require_once("include/config.php");
-
 require_once("include/validation.php");
 require_once("include/formatbytesbites.php");
-
 require_once("include/routeros_api.class.php");
 
 $API = new RouterosAPI(); 
