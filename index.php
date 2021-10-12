@@ -84,7 +84,7 @@ $page = isset($_GET["page"]) ? trim($_GET["page"]) : "login";
 
 $connection = $API->connect($config->mikrotik->ip_address, $config->mikrotik->user, decrypt($config->mikrotik->password));
 
-if((!isset($_SESSION['login']) || $_SESSION['login'] == '') && $page != "login"){
+if((!isset($_SESSION['login']) && $_SESSION['login'] == '') && $page != "login"){
    Redirect(url("/?page=login"));
 }
 else if(($connection == false || $connection == "") && $page != "settings"){
