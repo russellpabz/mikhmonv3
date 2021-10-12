@@ -94,9 +94,9 @@ else{
    if((!isset($_SESSION['login']) && $_SESSION['login'] == '') && $page != "login"){
       header("Location: ". url("/?page=login"));
    }
-   else if($connection == false && $page != "settings"){
-      header("Location: ". url("/?page=settings"));
-   }
+   // else if($connection == false && $page != "settings"){
+   //    header("Location: ". url("/?page=settings"));
+   // }
 }
 
 
@@ -112,10 +112,10 @@ else{
 
 include("themes/default/index.php");
 
-// echo '<pre>';
-// print_r($_GET);
-// print_r($_SESSION);
-// echo 'connection: '. $connection;
-// echo 'page: '. $page;
-// echo '</pre>';
+echo '<pre>';
+echo 'connection: '. $connection;
+echo 'page: '. $page;
+print_r($_GET);
+print_r($_SESSION);
+echo '</pre>';
 
