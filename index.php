@@ -91,12 +91,12 @@ else if(($connection == false || $connection == "") && $page != "settings"){
    Redirect(url("/?page=settings"));
 }
 
-// echo '<pre>';
-// print_r($_GET);
-// print_r($_SESSION);
-// echo 'connection: '. $connection;
-// echo 'page: '. $page;
-// echo '</pre>';
+echo '<pre>';
+print_r($_GET);
+print_r($_SESSION);
+echo 'connection: '. $connection;
+echo 'page: '. $page;
+echo '</pre>';
 
 // die();
 
