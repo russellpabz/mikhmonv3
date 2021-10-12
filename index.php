@@ -94,7 +94,7 @@ else{
    if((!isset($_SESSION['login']) && $_SESSION['login'] == '') && $page != "login"){
       header("Location: ". url("/?page=login"));
    }
-   else if(($connection == false || $connection == "") && $page != "settings"){
+   else if($connection == false && $page != "settings"){
       header("Location: ". url("/?page=settings"));
    }
 }
