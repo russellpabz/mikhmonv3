@@ -2,7 +2,7 @@
 
 $failed = false;
 
-if(isset($_POST["submit"])){
+if(isset($_POST["submit"]) && $_POST["submit"] == "login"){
 
   $username = trim($_POST["username"]);
   $password = trim($_POST["password"]);
@@ -95,7 +95,7 @@ include(THEME ."partials/header.php");
                 </div>
 
                 <div class="text-center">
-                  <button class="btn btn-primary" name="submit" type="submit">Login</button>
+                  <button class="btn btn-primary" name="submit" value="login" type="submit">Login</button>
                 </div>
 
               </div>

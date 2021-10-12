@@ -48,7 +48,7 @@ $page = isset($_GET["page"]) ? trim($_GET["page"]) : "login";
 $connection = $API->connect($config->mikrotik->ip_address, $config->mikrotik->user, decrypt($config->mikrotik->password));
 
 
-if((!isset($_SESSION["login"]) || $_SESSION["login"] == '' || $_SESSION["login"] == false)  && $page != "login"){
+if((!isset($_SESSION["login"]) || $_SESSION["login"] == '' || $_SESSION["login"] == false)  && ($page != "login" || $page != "settings")){
    header("Location:". url("/?page=login"));
 }
 else if($connection == false && $page != "settings"){

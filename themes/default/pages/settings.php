@@ -12,7 +12,7 @@ $val = new Validation();
 // die();
 
 
-if(isset($_POST["submit"])){
+if(isset($_POST["submit"]) && $_POST["submit"] == "save"){
   
   
   $password = trim(encrypt($_POST["password"]));
@@ -260,7 +260,7 @@ include(THEME ."partials/header.php");
 
                     <div class="col-md-12 text-right">
                       <a href="<?= url("?page=home") ?>" class="btn btn-info mt-5 waves-effect waves-light">Home Screen</a>
-                      <button class="btn btn-indigo mt-5 waves-effect waves-light" name="submit" type="submit">Save Form</button>
+                      <button class="btn btn-indigo mt-5 waves-effect waves-light" name="submit" value="save" type="submit">Save Form</button>
                     </div>
 
                   </div>
