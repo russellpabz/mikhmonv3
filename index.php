@@ -19,13 +19,13 @@
  
 session_start();
 // hide all error
-//error_reporting(0);
+error_reporting(0);
 // check url
 
 
-error_reporting(E_ALL);
-ini_set('display_errors', TRUE);
-ini_set('display_startup_errors', TRUE);
+// error_reporting(E_ALL);
+// ini_set('display_errors', TRUE);
+// ini_set('display_startup_errors', TRUE);
 
 
 
