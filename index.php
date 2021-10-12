@@ -50,7 +50,7 @@ $connection = $API->connect($config->mikrotik->ip_address, $config->mikrotik->us
 if($page == "logout"){
    header("Location:". url("/?page=logout"));
 }
-else if(isset($_SESSION["login"]) == false && $page != "login"){
+else if((!isset($_SESSION['login']) && $_SESSION['login'] == '') && $page != "login"){
    header("Location:". url("/?page=login"));
 }
 else if($connection == false && $page != "settings"){
