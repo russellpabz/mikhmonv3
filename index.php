@@ -55,12 +55,12 @@ else if($connection == false && $page != "settings"){
     header("Location:". url("/?page=settings"));
 }
 
- echo '<pre>';
-print_r($_SESSION);
-echo 'connection: '. $connection;
-echo '</pre>';
+//  echo '<pre>';
+// print_r($_SESSION);
+// echo 'connection: '. $connection;
+// echo '</pre>';
 
-die();
+// die();
 
 
 //$connection = true;
