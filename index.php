@@ -86,8 +86,9 @@ $connection = $API->connect($config->mikrotik->ip_address, $config->mikrotik->us
 
 
 if (version_compare(phpversion(), '8', '<')) {
-   echo phpversion();
-   die();
+   if((!isset($_SESSION['login']) && $_SESSION['login'] == '') && $page != "login"){
+      header("Location: ". url("/?page=login"));
+   }
 }
 else{
    if((!isset($_SESSION['login']) && $_SESSION['login'] == '') && $page != "login"){
