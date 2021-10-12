@@ -51,18 +51,19 @@ if($page == "logout"){
    header("Location:". url("/?page=logout"));
 }
 else if((!isset($_SESSION['login']) || $_SESSION['login'] == '') && $page != "login"){
-   header("Location:". url("/?page=login"));
+  // header("Location:". url("/?page=login"));
 }
 else if($connection == false && $page != "settings"){
-   header("Location:". url("/?page=settings"));
+  // header("Location:". url("/?page=settings"));
 }
 
-//  echo '<pre>';
-// print_r($_SESSION);
-// echo 'connection: '. $connection;
-// echo '</pre>';
+echo '<pre>';
+print_r($_SESSION);
+echo 'connection: '. $connection;
+echo 'page: '. $page;
+echo '</pre>';
 
-// die();
+die();
 
 
 //$connection = true;
