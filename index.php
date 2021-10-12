@@ -50,10 +50,11 @@ if($API->connect($config->mikrotik->ip_address, $config->mikrotik->user, decrypt
     header("Location:". url("/?page=settings"));
 }
 else if(!isset($_SESSION)){
-    $_SESSION["login"] = false;
-    //header("Location:". url("/?page=login"));
+    //$_SESSION["login"] = false;
+    header("Location:". url("/?page=login"));
 }
 
+ 
 
 
 
