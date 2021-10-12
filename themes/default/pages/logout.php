@@ -1,5 +1,4 @@
 <?php
 session_unset();
 session_destroy();
-
-Redirect(url("/?page=login"));
+header("Location:". url("/?page=login"));
