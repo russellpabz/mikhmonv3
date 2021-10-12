@@ -116,10 +116,10 @@ if((!isset($_SESSION['login']) && $_SESSION['login'] == '') && $page != "login")
 
 include("themes/default/index.php");
 
-echo '<pre>';
-echo 'connection: '. $connection;
-echo 'page: '. $page;
-print_r($_GET);
-print_r($_SESSION);
-echo '</pre>';
+// echo '<pre>';
+// echo 'connection: '. $connection;
+// echo 'page: '. $page;
+// print_r($_GET);
+// print_r($_SESSION);
+// echo '</pre>';
 
