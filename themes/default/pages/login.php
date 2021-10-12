@@ -15,7 +15,7 @@ if(isset($_POST["submit"]) && $_POST["submit"] == "login"){
     //   header("Location:". url("/?page=settings"));
     // }
     // else{
-      Redirect(url("/?page=home"));
+      header("Location:". url("/?page=home"));
     //}
 
   }
