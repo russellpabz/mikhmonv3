@@ -20,15 +20,16 @@
 session_start();
 // hide all error
 //error_reporting(0);
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 // check url
 
 
+error_reporting(E_ALL);
+ini_set('display_errors', TRUE);
+ini_set('display_startup_errors', TRUE);
 
-ini_set("max_execution_time", 20); 
+
+
+ini_set("max_execution_time", 10); 
 date_default_timezone_set('Asia/Manila');
 
 define('ROOT', dirname(__FILE__));
@@ -44,19 +45,17 @@ require_once("include/routeros_api.class.php");
 $API = new RouterosAPI(); 
 
 $page = isset($_GET["page"]) ? trim($_GET["page"]) : "login";
+$connection = false;
 
-$connection = false; 
-
-
-if((!isset($_SESSION["login"]) || $_SESSION["login"] == false) && $page != "login"){
-    $_SESSION["login"] = false;
+ 
+if(!isset($_SESSION["login"]) && $page != "login"){
     header("Location:". url("/?page=login"));
 }
 else if(!$API->connect($config->mikrotik->ip_address, $config->mikrotik->user, decrypt($config->mikrotik->password)) && $page != "settings"){
     header("Location:". url("/?page=settings"));
 }
 
-
+$connection = true;
 
 //ob_start("ob_gzhandler");
 

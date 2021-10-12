@@ -2,9 +2,10 @@
 
 $failed = false;
 
-if(isset($_POST["submit"])){
-
- // printing($_POST);
+if(isset($_SESSION["login"])){
+  header("Location:". url("/?page=home"));
+}
+else if(isset($_POST["submit"])){
 
   $username = trim($_POST["username"]);
   $password = trim($_POST["password"]);
@@ -22,7 +23,6 @@ if(isset($_POST["submit"])){
 
   }
   else{
-    $_SESSION["login"] = false;
     $failed = true;
   }
 
