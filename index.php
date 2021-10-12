@@ -47,6 +47,12 @@ $page = isset($_GET["page"]) ? trim($_GET["page"]) : "login";
 
 $connection = $API->connect($config->mikrotik->ip_address, $config->mikrotik->user, decrypt($config->mikrotik->password));
 
+echo '<pre>';
+print_r($_SESSION);
+echo 'connection: '. $connection;
+echo '</pre>';
+
+die();
 
 if(!isset($_SESSION["login"]) || $_SESSION["login"] == false){
     $_SESSION["login"] = false;
@@ -57,11 +63,6 @@ else if($connection == false && $page != "settings"){
 }
 
  
-echo '<pre>';
-print_r($_SESSION);
-echo 'connection: '. $connection;
-echo '</pre>';
-
 
 
 //$connection = true;
