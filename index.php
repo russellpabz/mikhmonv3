@@ -28,6 +28,43 @@ error_reporting(0);
 // ini_set('display_startup_errors', TRUE);
 
 
+if(!function_exists('Redirect')){
+   function Redirect($url, $code = 302) //from http://stackoverflow.com/questions/768431/how-to-make-a-redirect-in-php
+   {
+     #echo 'redirecting';
+     if (strncmp('cli', PHP_SAPI, 3) !== 0)
+     {
+       #echo 'cli';
+       if (headers_sent() !== true)
+       {
+         if (strlen(session_id()) > 0) // if using sessions
+         {
+             session_regenerate_id(true); // avoids session fixation attacks
+             session_write_close(); // avoids having sessions lock other requests
+         }
+         if (strncmp('cgi', PHP_SAPI, 3) === 0)
+         {
+             header(sprintf('Status: %03u', $code), true, $code);
+         }
+       header('Location: ' . $url, true, (preg_match('~^30[1237]$~', $code) > 0) ? $code : 302);
+       } else { //headers have already been sent. Use Meta refresh with js location.href fallback
+       ?>
+         <em>This page has moved.</em><br />
+         If you are not redirected automatically please follow this link: <a href=\"<?php echo $url; ?>"><?php echo $url; ?></a>.
+         <meta http-equiv="Refresh" content="1;
+         URL=<?php echo $url; ?>">
+         <script language=javascript>
+         setTimeout("location.href='<?php echo $url; ?>'",1);
+         </script>
+         <?php
+       }//end if headers_sent
+  
+       exit();
+     }
+   }
+}
+
+
 
 ini_set("max_execution_time", 10); 
 date_default_timezone_set('Asia/Manila');
@@ -48,16 +85,13 @@ $page = isset($_GET["page"]) ? trim($_GET["page"]) : "login";
 $connection = $API->connect($config->mikrotik->ip_address, $config->mikrotik->user, decrypt($config->mikrotik->password));
 
 if($page == "logout"){
-   header("Location:". url("/?page=logout"));
-   exit;
+   Redirect(url("/?page=logout"));
 }
 else if((!isset($_SESSION['login']) || $_SESSION['login'] == '') && $page != "login"){
-  // header("Location:". url("/?page=login"));
-  exit;
+   Redirect(url("/?page=login"));
 }
 else if(($connection == false || $connection == "") && $page != "settings"){
-  // header("Location:". url("/?page=settings"));
-  exit;
+   Redirect(url("/?page=settings"));
 }
 
 echo '<pre>';

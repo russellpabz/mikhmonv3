@@ -70,7 +70,7 @@ if(isset($_POST["submit"]) && trim($_POST["comment"]) != ""){
 
 }
 else{
-  header("Location:". url("/?page=generate"));
+  Redirect(url("/?page=generate"));
 }
 
 
