@@ -189,7 +189,7 @@ include(THEME ."partials/header.php");
 
               
                 <div class="md-form" style="display:none;">
-                  <input type="text"readonly name="timelimit" class="form-control" value="12h" required>
+                  <input type="text"readonly name="timelimit" class="form-control" value="1d" required>
                   <label for="form1" class="">Time Limit</label>
                 </div>  
 
