@@ -71,7 +71,7 @@ include(THEME ."partials/header.php");
 
             <li>
               <a href="<?= url("?page=home") ?>" class="collapsible-header waves-effect">
-                <i class="w-fa fas fa-tachometer-alt"></i>Reportss
+                <i class="w-fa fas fa-tachometer-alt"></i>Reports
               </a>
             </li>
             <!-- Simple link -->
@@ -144,7 +144,7 @@ include(THEME ."partials/header.php");
       <!-- Section heading -->
       <div class="mt-lg-5 mb-3">
 
-        <h4 class="text-left font-weight-bold dark-grey-text">Reportss</h4>
+        <h4 class="text-left font-weight-bold dark-grey-text">Reports</h4>
 
         <hr>
 
