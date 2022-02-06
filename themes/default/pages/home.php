@@ -71,7 +71,7 @@ include(THEME ."partials/header.php");
 
             <li>
               <a href="<?= url("?page=home") ?>" class="collapsible-header waves-effect">
-                <i class="w-fa fas fa-tachometer-alt"></i>Reports
+                <i class="w-fa fas fa-tachometer-alt"></i>Reportss
               </a>
             </li>
             <!-- Simple link -->
