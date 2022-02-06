@@ -144,7 +144,7 @@ include(THEME ."partials/header.php");
       <!-- Section heading -->
       <div class="mt-lg-5 mb-3">
 
-        <h4 class="text-left font-weight-bold dark-grey-text">Reports1</h4>
+        <h4 class="text-left font-weight-bold dark-grey-text">Reports2</h4>
 
         <hr>
 
@@ -210,7 +210,7 @@ include(THEME ."partials/header.php");
                         
                             <?php $data = explode('|', $row['name']); ?>
 
-                            <?php if(date("d", strtotime($row['source'])) == date("d", strtotime($date))): ?>
+                            <?php if(date("m-d", strtotime($row['source'])) == date("m-d", strtotime($date))): ?>
 
                             <?php $price = str_replace("Php","", $data[2]); ?>
 
