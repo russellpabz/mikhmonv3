@@ -144,7 +144,7 @@ include(THEME ."partials/header.php");
       <!-- Section heading -->
       <div class="mt-lg-5 mb-3">
 
-        <h4 class="text-left font-weight-bold dark-grey-text">Reports</h4>
+        <h4 class="text-left font-weight-bold dark-grey-text">Reports1</h4>
 
         <hr>
 
