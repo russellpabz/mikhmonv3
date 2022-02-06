@@ -210,7 +210,7 @@ include(THEME ."partials/header.php");
                         
                             <?php $data = explode('|', $row['name']); ?>
 
-                            <?php if(date("m-d", strtotime($row['source'])) == date("m-d", strtotime($date))): ?>
+                            <?php if(date("d", strtotime($row['source'])) == date("d", strtotime($date))): ?>
 
                             <?php $price = str_replace("Php","", $data[2]); ?>
 
