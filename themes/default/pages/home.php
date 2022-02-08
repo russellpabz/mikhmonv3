@@ -168,6 +168,7 @@ include(THEME ."partials/header.php");
                       <select class="mdb-select md-form" name="user">
                         <option value="" disabled selected>Choose your option</option>
                         <option <?php echo ($user == "admin") ? "selected" : "" ?> value="admin">Admin</option>
+                        <option <?php echo ($user == "jessie") ? "selected" : "" ?> value="jessie">Jessie</option>
                         <option <?php echo ($user == "julian") ? "selected" : "" ?> value="julian">Julian</option>
                         <option <?php echo ($user == "geselle") ? "selected" : "" ?> value="geselle">Geselle</option>
                       </select>
